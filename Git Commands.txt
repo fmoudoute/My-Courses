@@ -20,13 +20,13 @@ mv Data Documents - Moves it to "Documents"
 
 Link Git Hub to local Git repo:
 git init - innitializes empty git repo in current directory
-git remote add orgin https://github.com/D-Cipher/Submissions.git
+git remote add orgin [link to repo here]
 git remote rm orgin
 
 Push fork and pull:
-git push https://github.com/D-Cipher/Submissions.git - pushes files to git hub
-git pull https://github.com/D-Cipher/Submissions.git - pulls files from git hub
-git clone https://github.com/D-Cipher/Submissions.git- forks files from git hub
+git push [link to repo here] - pushes files to git hub
+git pull [link to repo here] - pulls files from git hub
+git clone [link to repo here] - forks files from git hub
 
 *Note: If there is an "Everything up to date" issue then try
 	creating a read me file in the repo and pulling it to the locally then pushing.
@@ -36,7 +36,7 @@ git status - displays untracked files
 git add . - adds all new files
 git add -u - udates changes
 git add -a -does both of the above
-git commit -m "Message of what you changed" -commits your changes
+git commit -m "Message" -commits your changes
 
 Markdown Syntax in .txt file
 ## This is a secondary heading
