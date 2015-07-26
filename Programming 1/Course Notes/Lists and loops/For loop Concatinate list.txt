@@ -1,0 +1,17 @@
+#For loop concatinate list
+
+def string_list_join(string_list):
+    concat = ""
+    for i in range(len(string_list)):
+        concat += string_list[i]
+    return concat
+
+print string_list_join([])
+print string_list_join(["pig", "dog"])
+print string_list_join(["spam", " and ", "eggs"])
+print string_list_join(["a", "b", "c", "d"])
+
+#
+#pigdog
+#spam and eggs
+#abcd

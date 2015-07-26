@@ -1,0 +1,15 @@
+class Ball:
+    def __init__(self, pos, rad):
+        self.position = pos
+        self.radius = rad
+        
+    def __str__(self):
+        return ("Ball is at pos: " + str(self.position) 
+                + ", has radius " + str(self.radius))    
+    
+    def get_position(self):
+        return self.position
+
+b = Ball([0,0], 10)
+
+print b

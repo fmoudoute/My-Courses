@@ -1,0 +1,147 @@
+# Implementation of the memory card game Using OBJECTS
+import simplegui
+import random
+
+TILE_WIDTH = 50
+TILE_HEIGHT = 100
+loc_value = range(0,16,1) #[0:15]
+num_innit = range(1,9) #[1:8]
+num_final = []
+tile_objs = []
+state = 0
+card_index1 = None
+card_index2 = None
+turn_count = 0
+
+
+#Classes
+class Tile:
+    
+    def __init__(self, num, exp, loc):
+        self.number = num
+        self.exposed = exp
+        self.loc = loc #0 through 16
+        
+    def __str__(self):
+        return ("Number is " + str(self.number) 
+                + ", exposed is " + str(self.exposed))
+    
+    def get_number(self):
+        return self.number
+
+    def is_exposed(self):
+        return self.exposed
+    
+    def expose_tile(self):
+        self.exposed = True
+    
+    def hide_tile(self):
+        self.exposed = False
+                
+    def draw_tile(self, canvas):
+        if self.exposed == True:
+            canvas.draw_polygon([[self.loc*TILE_WIDTH, 0],
+                                 [(self.loc+1)*TILE_WIDTH, 0],
+                                 [(self.loc+1)*TILE_WIDTH, TILE_HEIGHT],
+                                 [self.loc*TILE_WIDTH, TILE_HEIGHT]], 2.5, "Red", "Black")
+            canvas.draw_text(str(self.number), [TILE_WIDTH*self.loc+15, 60], 30, "White")
+        elif self.exposed == False:
+            canvas.draw_polygon([[self.loc*TILE_WIDTH, 0],
+                                 [(self.loc+1)*TILE_WIDTH, 0],
+                                 [(self.loc+1)*TILE_WIDTH, TILE_HEIGHT],
+                                 [self.loc*TILE_WIDTH, TILE_HEIGHT]], 1, "Black", "Green")
+        else:
+            pass
+
+
+        
+#Innitiate
+def new_game():
+    global num_innit, num_final, tile_obj, faceups, state, card_index1, card_index2, turn_count
+    num_final = []
+    tile_objs = []
+    state = 0
+    card_index1 = None
+    card_index2 = None
+    
+    for i in num_innit:
+        num_final.append(i)
+        num_final.append(i)
+    random.shuffle(num_final)
+    turn_count = 0
+    
+        
+#Helper
+def Clear_cards():
+    global tile_objs
+    for i in range(len(loc_value)):
+        tile_objs[i].hide_tile()
+    
+    new_game()
+    tile_objs = [Tile(num_final[i], False, loc_value[i]) for i in range(len(loc_value))]
+    #print num_final
+
+def Match_Cards(First,Second):
+    if (First == Second
+       ) and (First != 0) and (Second != 0) and First in num_final:
+        return True
+    elif First != Second:
+        return False
+    else:
+        pass
+
+#Handler
+def draw(canvas):
+    for i in range(len(loc_value)):
+        tile_objs[i].draw_tile(canvas)
+    label.set_text("Turns = " + str(turn_count))
+        
+def mouse_click(click): 
+    global match_list, faceups, state, card_index1, card_index2, turn_count
+    card_pos = click[0]//50
+
+    if state == 0 and tile_objs[card_pos].is_exposed() == False:
+        card_index1 = loc_value[(card_pos)]
+        tile_objs[card_index1].expose_tile()
+        state = 1
+    elif state == 1 and tile_objs[card_pos].is_exposed() == False:
+        card_index2 = loc_value[(card_pos)]
+        tile_objs[card_index2].expose_tile()
+        state = 2
+        turn_count += 1
+    elif state == 2 and tile_objs[card_pos].is_exposed() == False:
+        if Match_Cards(num_final[card_index1],num_final[card_index2]) == True:
+            tile_objs[card_index1].expose_tile()
+            tile_objs[card_index2].expose_tile()
+        elif Match_Cards(num_final[card_index1],num_final[card_index2]) == False:
+            tile_objs[card_index1].hide_tile()
+            tile_objs[card_index2].hide_tile()
+        else:
+            pass
+        card_index1 = loc_value[(card_pos)]
+        tile_objs[card_index1].expose_tile()
+        state = 1
+        card_index2 = None
+    else:
+        pass
+        
+    print (card_index1, card_index2, state)  
+        
+# create frame and add a button and labels
+frame = simplegui.create_frame("Memory", 16 * TILE_WIDTH, TILE_HEIGHT)
+frame.set_draw_handler(draw)
+frame.set_mouseclick_handler(mouse_click)
+frame.add_button("Reset", Clear_cards)
+frame.add_label("Enjoy the game! :)")
+label = frame.add_label("Turns = " + str(turn_count))
+
+new_game()
+
+#Creates 'i' tile objects:
+tile_objs = [Tile(num_final[i], False, loc_value[i]) for i in range(len(loc_value))]
+
+frame.start()
+
+# Enjoy the game!
+# Yours,
+# Cypher

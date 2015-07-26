@@ -1,0 +1,17 @@
+#Collatz sequence
+#Take any natural number, if it is even divide by 2
+#if it is odd multiply by 3 and add 1
+#Repeat
+#Result: for any number, it will converge to 1.
+#To this day no one has been able to prove why or disprove it.
+
+def collatz(n):
+    i = n
+    while i > 1:
+        if i % 2 == 0:
+            i = i / 2
+        else:
+            i = 3 * i + 1
+        print i
+
+collatz(22394)

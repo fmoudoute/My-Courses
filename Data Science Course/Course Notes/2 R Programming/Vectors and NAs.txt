@@ -1,0 +1,12 @@
+#Combining vectors
+my_char = c("my", "name", "is")
+paste(my_char, collapse = " ")
+
+#Example 2:
+paste("0", i, sep="")
+
+#Idendifies all the non-NAs
+complete.cases(my_data)
+
+#Creates a data frame without NAs
+na.omit(my_data)

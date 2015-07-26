@@ -1,0 +1,70 @@
+#Classes Excercises
+
+import simplegui
+
+# images
+joe = simplegui.load_image("http://farm9.staticflickr.com/8560/8876956295_fa57030cf4_o.png")
+img_sz = (171, 370)
+img_ctr = (img_sz[0]//2, img_sz[1]//2)
+
+COLORS = ["Blue", "Red", "Yellow", "Green", "Pink"]
+color_key = 0
+
+class Tie:
+    def __init__(self):
+        self.color = "White"
+        self.width = 50
+        self.height = 100
+        self.location = (100,200)
+        
+    def __str__(self):
+        return "I amd a " + self.color + " tie."
+    
+    def draw(self, canvas):
+        x, y = self.location[0], self.location[1]
+        w, h = self.width, self.height
+        A = (x - w/4, y - h/2)
+        B = (x + w/4, y - h/2)
+        C = (x + w/8, y - 3*(h/8))
+        D = (x - w/8, y-3*(h/8))
+        E = (x - w/2, y + h/4)
+        F = (x, y + h/2)
+        G = (x + w/2, y + h/4)
+        canvas.draw_polygon([A,B,C,D], 1, "Black", self.color)
+        canvas.draw_polygon([C,D,E,F,G], 1, "Black", self.color)
+    
+    def drag(self, pos):
+        self.location = pos
+    
+    def change_color(self, color):
+        self.color = color
+
+#Def Tie1
+tie1 = Tie()
+
+#Event Handler
+def drag(pos):
+    tie1.drag(pos)
+    
+def new_color():
+    global color_key
+    color_key += 1
+    color_key %= 5
+    tie1.change_color(COLORS[color_key])
+
+
+#Draw Handler
+def draw(canvas):
+    canvas.draw_image(joe, img_ctr, img_sz, (250, 215), img_sz)
+    tie1.draw(canvas)
+
+# create frame, labels and buttons
+frame = simplegui.create_frame("Scott's Revenge", 400, 400)
+frame.set_draw_handler(draw)
+frame.set_mousedrag_handler(drag)
+frame.add_button("Change Color", new_color, 100)
+frame.add_label("")
+frame.add_label("Drag a tie onto Joe")
+
+# start
+frame.start()  

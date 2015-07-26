@@ -1,0 +1,55 @@
+#Iterations over list
+
+def count_odd(numbers):
+    count = 0
+    for num in numbers:
+        if num % 2 == 1:
+            count += 1
+    return count
+
+#===Removes all odd numbers by .remove
+def remove_odd(numbers):
+    remove =[]
+    for num in numbers:
+        if num % 2 == 1:
+            remove.append(num)
+            
+    for num in remove:
+        numbers.remove(num)
+
+#===Removes all odd numbers by creating a new list
+def remove_odd_newls(numbers):
+    newnums = []
+    for num in numbers:
+        if num % 2 == 0:
+            newnums.append(num)
+    return newnums
+
+#===Removes last odd number and controlls for duplicates
+def locationID(numbers, value):
+    return [i for i, l in enumerate(numbers) if l == value]
+
+def remove_lastodd_fixed(numbers):
+    has_odd = False
+    last_odd = 0
+    newnums =[]
+    
+    for num in numbers:
+        newnums.append(num)
+        if num % 2 == 1:
+            has_odd = True
+            last_odd = num
+    
+    if has_odd:
+        newnums.pop(locationID(numbers, last_odd)[-1])
+        return newnums
+
+
+def run():
+    numbers = [1, 7, 2, 34, 8, 7,
+               2, 5, 14, 22, 93, 
+               48, 76, 15, 7]
+    print numbers
+    print remove_lastodd_fixed(numbers)
+    
+run()

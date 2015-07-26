@@ -1,0 +1,15 @@
+Markdown: a text-to-HTML converter
+
+**Bold**
+*italics*
+
+#Primary heading
+##Secondary heading
+###Tertiary heading
+
+[Link][1]
+[1]: www.links.com/aaa/bbb "Link"
+
+(Spaces after a line is indent)  
+
+

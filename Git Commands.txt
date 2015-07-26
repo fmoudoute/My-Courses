@@ -1,0 +1,38 @@
+Git Commands
+
+Vewing Directories:
+pwd - Print working directory
+ls - lists directories in current directory
+
+Navigating and altering directories:
+cd - navigates directory
+cd C:/Users/wcai/Desktop/"5 Personal Projects"/Submissions - Navigates directory
+mkdir DATA - Makes directory called "DATA"
+rm - removes directory
+
+Moving Directories:
+touch DATA - picks up directory "DATA"
+mv Data Documents - Moves it to "Documents"
+
+Link Git Hub to local Git repo:
+git init - innitializes empty git repo in current directory
+git remote add orgin https://github.com/D-Cryption/Submissions.git
+
+Push fork and pull:
+git push https://github.com/D-Cryption/Submissions.git - pushes files to git hub
+git pull https://github.com/D-Cryption/Submissions.git - pulls files from git hub
+git clone https://github.com/D-Cryption/Submissions.git- forks files from git hub
+
+Updates Local repo:
+git status - displays untracked files
+git add . - adds all new files
+git add -u - udates changes
+git add -a -does both of the above
+git commit -m "Message of what you changed" -commits your changes
+
+Markdown Syntax in .txt file
+## This is a secondary heading
+### This is a teriary heading
+*This is a list
+
+

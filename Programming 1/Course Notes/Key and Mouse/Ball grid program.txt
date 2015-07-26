@@ -1,0 +1,25 @@
+# Ball grid slution
+import simplegui
+
+BALL_RADIUS = 20
+GRID_SIZE = 10
+WIDTH = 2 * GRID_SIZE * BALL_RADIUS
+HEIGHT = 2 * GRID_SIZE * BALL_RADIUS
+ball_list = range(1, GRID_SIZE + 1) # list from [1:10]
+#20,60,100,140... = i[0] + (i[n] - 1)*d <= formula for series
+
+# define draw
+def draw(canvas):
+    for i in ball_list:
+        ball_hpos = (ball_list[0]+19) + (i - 1)*(BALL_RADIUS*2)
+        for j in ball_list:
+            ball_vpos = (ball_list[0]+19) + (j - 1)*(BALL_RADIUS*2)    
+            canvas.draw_circle((ball_hpos, ball_vpos), BALL_RADIUS, 1, 
+                                "White", "White")    
+print ball_list
+# create frame and register handlers
+frame = simplegui.create_frame("Ball grid", WIDTH, HEIGHT)
+frame.set_draw_handler(draw)
+
+# start frame
+frame.start()
