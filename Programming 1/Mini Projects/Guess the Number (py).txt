@@ -1,6 +1,6 @@
 #Guess the number program
 #Enjoy the game :)
-#Yours, D'Cryption
+#Yours, D'Cypher
 
 try:
     import simplegui

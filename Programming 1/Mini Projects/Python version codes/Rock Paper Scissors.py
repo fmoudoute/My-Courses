@@ -1,5 +1,7 @@
-#__author__ = 'Cypher'
 # Rock-paper-scissors-lizard-Spock
+#Enjoy the game :)
+#Yours, D'Cypher
+
 #sissors > paper
 #Paper > rock
 #Rock > lizard
@@ -70,7 +72,3 @@ rpsls("lizard")
 rpsls("scissors")
 
 #print "secret number is" , cpu_number
-
-# Enjoy the game!
-# Yours,
-# Cypher

@@ -1,6 +1,6 @@
 #__author__ = 'Cypher'
 #Enjoy the game :)
-#Yours, D'Cryption
+#Yours, D'Cypher
 
 # Rock-paper-scissors-lizard-Spock
 #sissors > paper

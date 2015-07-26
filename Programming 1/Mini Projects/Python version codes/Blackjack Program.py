@@ -1,6 +1,6 @@
 #Blackjack Program
-#Enjoy the game
-#Yours, D'Cryption
+#Enjoy the game :)
+#Yours, D'Cypher
 
 try:
     import simplegui

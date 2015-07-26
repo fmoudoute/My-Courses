@@ -1,6 +1,6 @@
 #Implementation of the memory card game Using OBJECTS
-#Enjoy the game
-#Yours, D'Cryption
+#Enjoy the game :)
+#Yours, D'Cypher
 
 try:
     import simplegui

@@ -1,4 +1,7 @@
 # Implementation of the memory card game Using OBJECTS
+#Enjoy the game :)
+#Yours, D'Cypher
+
 import simplegui
 import random
 

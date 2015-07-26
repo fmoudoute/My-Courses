@@ -1,4 +1,7 @@
 # Implementation of classic arcade game Pong
+#Enjoy the game :)
+#Yours, D'Cypher
+
 try:
     import simplegui
 except ImportError:
@@ -240,6 +243,3 @@ frame.set_keyup_handler(keyup)
 frame.start()
 new_game()
 
-# Enjoy the game!
-# Yours,
-# Cypher

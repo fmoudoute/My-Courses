@@ -1,5 +1,6 @@
 #Stopwatch Program
-
+#Enjoy the game :)
+#Yours, D'Cypher
 try:
     import simplegui
 except ImportError:
@@ -134,6 +135,3 @@ frame.add_button("Reset", button_reset, 200)
 frame.start()
 timer.start()
 
-# Enjoy the game!
-# Yours,
-# Cypher

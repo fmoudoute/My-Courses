@@ -1,6 +1,6 @@
 # Implementation of classic arcade game Pong
 #Enjoy the game :)
-#Yours, D'Cryption
+#Yours, D'Cypher
 
 try:
     import simplegui

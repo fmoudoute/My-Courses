@@ -1,5 +1,9 @@
 Git Commands
 
+Config:
+git config --global user.name "D-Cipher"
+git config --global user.email d.cipher.x@gmail.com
+
 Vewing Directories:
 pwd - Print working directory
 ls - lists directories in current directory
@@ -16,12 +20,16 @@ mv Data Documents - Moves it to "Documents"
 
 Link Git Hub to local Git repo:
 git init - innitializes empty git repo in current directory
-git remote add orgin https://github.com/D-Cryption/Submissions.git
+git remote add orgin https://github.com/D-Cipher/Submissions.git
+git remote rm orgin
 
 Push fork and pull:
-git push https://github.com/D-Cryption/Submissions.git - pushes files to git hub
-git pull https://github.com/D-Cryption/Submissions.git - pulls files from git hub
-git clone https://github.com/D-Cryption/Submissions.git- forks files from git hub
+git push https://github.com/D-Cipher/Submissions.git - pushes files to git hub
+git pull https://github.com/D-Cipher/Submissions.git - pulls files from git hub
+git clone https://github.com/D-Cipher/Submissions.git- forks files from git hub
+
+*Note: If there is an "Everything up to date" issue then try
+	creating a read me file in the repo and pulling it to the locally then pushing.
 
 Updates Local repo:
 git status - displays untracked files

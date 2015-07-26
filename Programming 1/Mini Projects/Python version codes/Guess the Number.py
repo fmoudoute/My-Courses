@@ -1,4 +1,6 @@
-#__author__ = 'Cypher'
+#Enjoy the game :)
+#Yours, D'Cypher
+
 try:
     import simplegui
 except ImportError:
@@ -100,7 +102,3 @@ f.start()
 new_game()
 
 #print "secret number is" , cpu_number
-
-# Enjoy the game!
-# Yours,
-# Cypher
