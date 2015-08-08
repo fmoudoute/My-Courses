@@ -289,10 +289,13 @@ def hit():
 
 def stand():
     global Bjack_deck, state, outcome, in_play, plyr_c, dealr_c, plyr_v, dealr_v
+    
     if plyr_v > 21:
         pass
-    else:
+    elif state == 0:
         endgame()
+    else:
+        pass
 
         plyr_c_names = ""
         for i in plyr_c:

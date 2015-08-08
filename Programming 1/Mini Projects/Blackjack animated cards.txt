@@ -1,0 +1,327 @@
+# Mini-project #6 - Blackjack
+
+import simplegui
+import random
+import time
+
+# load card sprite - 936x384 - source: jfitz.com
+CARD_SIZE = (72, 96)
+CARD_CENTER = (36, 48)
+card_images = simplegui.load_image("http://storage.googleapis.com/codeskulptor-assets/cards_jfitz.png")
+
+CARD_BACK_SIZE = (72, 96)
+CARD_BACK_CENTER = (36, 48)
+card_back = simplegui.load_image("http://storage.googleapis.com/codeskulptor-assets/card_jfitz_back.png")    
+
+CARD_ANIMATION_DURATION = 0.6
+DELAY_BETWEEN_CARDS = 0.5
+
+# initialize some useful global variables
+in_play = False
+outcome = ""
+score = 0
+
+# define globals for cards
+SUITS = ('Clubs', 'Spades', 'Hearts', 'Diamonds')
+RANKS = ('Ace', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King')
+VALUES = {'Ace':1, '2':2, '3':3, '4':4, '5':5, '6':6, '7':7, '8':8, '9':9, '10':10, 'Jack':10, 'Queen':10, 'King':10}
+
+
+# define card class
+class Card:
+    def __init__(self, suit, rank, face_up=False, pos=None, rotation=0):
+        self.face_up = face_up
+        self.rotation = rotation
+        if (suit in SUITS) and (rank in RANKS):
+            self.suit = suit
+            self.rank = rank
+        else:
+            self.suit = None
+            self.rank = None
+            print "Invalid card: ", suit, rank
+        self.start_pos = None
+        self.end_pos = pos
+        self.animation_start_time = None
+        self.animation_duration = None
+
+    def __str__(self):
+        if self.face_up:
+            return self.rank + " of " + self.suit
+        else:
+            return self.rank + " of " + self.suit + " (face down)"
+
+    def is_face_up(self):
+        return self.face_up
+    
+    def set_face_up(self, face_up):
+        self.face_up = face_up
+    
+    def set_rotation(self, rotation = 'random'):
+        if rotation == 'random':
+            self.rotation = random.random()*.2 - 0.1
+        else:
+            self.rotation = rotation
+            
+    def get_suit(self):
+        return self.suit
+
+    def get_rank(self):
+        return self.rank
+
+    def animate(self, start_pos, end_pos, duration = CARD_ANIMATION_DURATION):
+        self.start_pos = start_pos
+        self.end_pos = end_pos
+        self.animation_start_time = time.time()
+        self.animation_duration = duration
+
+    def set_end_position(self, end_pos):
+        self.start_pos = None
+        self.end_pos = end_pos
+        self.animation_start_time = None
+        self.animation_duration = None
+        
+    def get_current_pos(self):
+        # uses start_pos, end_position, animation_start_time, and animation_duration
+        # and the current time to figure out the current position along the
+        # linear path between the start and end points. 
+         
+        if self.start_pos == None or self.animation_start_time == None or self.animation_duration == None:
+            # not set up for animation, just use final position
+            return self.end_pos
+        
+        percent_complete = (time.time() - self.animation_start_time) / self.animation_duration
+        
+        if percent_complete < 0.01:  # dealing with any possible floating point weirdness
+            return self.start_pos
+        
+        if percent_complete > 0.99:  # same reason, call it done.
+            return self.end_pos
+        
+        current_x = self.start_pos[0] + percent_complete * (self.end_pos[0]-self.start_pos[0])
+        # example: 25% complete between (10,10) and (20,0), current x = 12.5
+        current_y = self.start_pos[1] + percent_complete * (self.end_pos[1]-self.start_pos[1])
+        # example: 25% complete between (10,10) and (20,0), current y = 7.5
+        return (current_x, current_y)
+        
+    def draw(self, canvas):
+        if self.face_up:
+            card_loc = (CARD_CENTER[0] + CARD_SIZE[0] * RANKS.index(self.rank), 
+                    CARD_CENTER[1] + CARD_SIZE[1] * SUITS.index(self.suit))
+            images = card_images
+        else:
+            card_loc = CARD_BACK_CENTER
+            images = card_back
+        pos = self.get_current_pos()
+
+        canvas.draw_image(images, card_loc, 
+                          CARD_SIZE, [pos[0] + CARD_CENTER[0], pos[1] + CARD_CENTER[1]], 
+                          CARD_SIZE, 
+                         self.rotation)
+        
+# define hand class
+class Hand:
+    def __init__(self, name = "", pos = None):
+        self.cards = []
+        self.pos = pos
+        self.name = name
+
+    def __str__(self):
+        return_string = "Cards in hand:"
+        for card in self.cards:
+            return_string += str(card)
+        return return_string
+      
+    def reset(self):
+        self.cards = []
+        
+    def add_card(self, card):
+        self.cards.append(card)
+
+    def get_next_card_pos(self):
+        x_pos = self.pos[0] + len(self.cards)*(0.3 * CARD_SIZE[0])
+        y_pos = self.pos[1] + len(self.cards)*(0.3 * CARD_SIZE[1])
+        return (x_pos, y_pos)
+        
+    def show_all_cards(self):
+        for card in self.cards:
+            card.set_face_up(True)
+
+    def all_face_up(self):
+        for card in self.cards:
+            if not card.is_face_up():
+                return False
+        return True
+            
+    def get_value(self):
+        # count aces as 1, if the hand has an ace, then add 10 to hand value if it doesn't bust
+        any_aces = False
+        value = 0
+        for card in self.cards:
+            rank = card.get_rank()
+            value += VALUES[rank]
+            if rank == 'Ace':
+                any_aces = True
+            
+        if any_aces and value <= 11:
+            value += 10
+        return value
+   
+    def draw(self, canvas):
+        for card in self.cards:
+            card.draw(canvas)
+        if self.all_face_up():
+            canvas.draw_text(self.name+' hand value: '+str(self.get_value()), 
+                         (self.pos[0]+2.0*CARD_SIZE[0], 
+                          self.pos[1]+0.5*CARD_SIZE[1]),
+                         20, 'White', 'serif')
+        
+# define deck class 
+class Deck:
+    def __init__(self, pos = [300,300]):
+        self.cards = []
+        self.pos = pos
+        self.reset_deck()
+
+    def reset_deck(self):
+        self.cards = [Card(suit, rank, False, list(self.pos)) 
+                 for suit in SUITS 
+                 for rank in RANKS]
+
+    def shuffle(self):
+        self.reset_deck()
+        random.shuffle(self.cards)
+
+    def deal_card(self):
+        return self.cards.pop()
+    
+    def get_pos(self):
+        return self.pos
+    
+    def __str__(self):
+        return "cards:" + [" "+str(card) for card in self.cards]
+
+def deal_card(to_whom, face_up):
+    card = deck.deal_card()
+    card.set_face_up(face_up)
+    card.set_rotation('random')
+    if to_whom == 'dealer':
+        hand = dealers_hand
+        print "Card to dealer: " + str(card)
+    else:
+        hand = players_hand
+        print "Card to " + str(to_whom) + ": " + str(card)
+    card.animate(deck.get_pos(), hand.get_next_card_pos())
+    hand.add_card(card)
+        
+#define event handlers for buttons
+def deal():
+    global outcome, in_play, score
+
+    # your code goes here
+    print "------"
+    deck.shuffle()
+    dealers_hand.reset()
+    players_hand.reset()
+    deal_card('player', True)
+    deal_card('dealer', False)
+    deal_card('player', True)
+    deal_card('dealer', True)
+    print "Player's hand value: " + str(players_hand.get_value())
+
+    outcome = "Hit or Stand?"
+    if in_play == True:
+        score -= 1
+        outcome = "You folded. New hand. Hit or Stand?"
+    in_play = True
+    print outcome
+
+def hit():
+    global score, outcome, in_play
+    # if the hand is in play, hit the player
+    if not in_play:
+        return
+    
+    deal_card('player', True)
+    print "Player's hand value: " + str(players_hand.get_value())
+   
+    # if busted, assign a message to outcome, update in_play and score
+    if players_hand.get_value() > 21:
+        outcome = "Ouch! You busted. Deal again?"
+        score -= 1
+        in_play = False
+        dealers_hand.show_all_cards()
+    else:
+        outcome = "Another card?"
+    print outcome
+    
+def stand():
+    global score, outcome, in_play
+    deal_again_timer.stop()
+    if not in_play:
+        return
+
+    dealers_hand.show_all_cards()
+    # if hand is in play, repeatedly hit dealer until his hand has value 17 or more
+
+    if dealers_hand.get_value() < 17:
+        print "Dealer's hand value: " + str(dealers_hand.get_value())
+        deal_card('dealer', True)
+        if dealers_hand.get_value() < 17:
+            deal_again_timer.start()
+            return
+        print "Dealer's hand value: " + str(dealers_hand.get_value())
+       
+    # assign a message to outcome, update in_play and score
+    in_play = False
+    if dealers_hand.get_value() > 21:
+        outcome = "Dealer Busted. You win!"
+        score += 1
+    elif dealers_hand.get_value() > players_hand.get_value():
+        outcome = str(dealers_hand.get_value()) + " beats " + str(players_hand.get_value()) + ". Dealer wins. Deal?"
+        score -= 1
+    elif dealers_hand.get_value() == players_hand.get_value():
+        outcome = "Dealer wins on ties. Deal again?"
+        score -= 1
+    else:
+        outcome = str(players_hand.get_value()) + " beats " + str(dealers_hand.get_value()) + ". You win! Deal?"
+        score += 1
+    in_play = False
+    print "score: " + str(score)
+    print outcome
+    
+
+    
+# draw handler    
+def draw(canvas):
+
+    canvas.draw_text("Blackjack", [20,20],9, 'White', 'serif')
+
+    dealers_hand.draw(canvas)
+    players_hand.draw(canvas)
+    canvas.draw_text(outcome, (CARD_SIZE[0]*1.4, 40), 
+                     30, 'White', 'serif')
+    canvas.draw_text("Score = "+str(score), (CARD_SIZE[0]*1.4, 80), 
+                     30, 'White', 'serif')
+
+
+# initialization frame
+frame = simplegui.create_frame("Blackjack", 600, 600)
+frame.set_canvas_background("Green")
+
+#create buttons and canvas callback
+frame.add_button("Deal", deal, 200)
+frame.add_button("Hit",  hit, 200)
+frame.add_button("Stand", stand, 200)
+frame.set_draw_handler(draw)
+
+deal_again_timer = simplegui.create_timer(DELAY_BETWEEN_CARDS*1000, stand)
+
+# get things rolling
+deck = Deck([400,50])
+players_hand = Hand("Your",[100, 320])
+dealers_hand = Hand("Dealer's", [100, 100])
+deal()
+frame.start()
+
+
+# remember to review the gradic rubric
