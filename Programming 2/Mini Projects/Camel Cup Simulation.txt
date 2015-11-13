@@ -1,0 +1,580 @@
+"""
+A simple Monte Carlo simulation for Camel Cup Game.
+
+"""
+
+import random
+import codeskulptor
+codeskulptor.set_timeout(20)
+
+
+
+#=====Creates Class Objects for Camel Cup
+
+class Camel:
+    """
+    Initiates camel class object. 
+    """
+    
+    def __init__(self, name, place = 1, location = 1, stack_order = 1, 
+                 moved = False):
+        self.name = name
+        self.place = place
+        self.location = location
+        self.stack_order = stack_order
+        self.moved = moved
+        
+        #Sort order
+        self.update_sort_order()
+        
+    def __lt__(self, other):
+        return self.sort_order > other.sort_order
+    
+    def __str__(self):
+        return (str(self.name) +","+ str(self.place) +","+ 
+                str(self.location) +","+ str(self.stack_order) +","+
+                str(self.moved))
+    
+    def get_name(self):
+        return self.name
+    
+    def get_place(self):
+        return self.place
+    
+    def get_location(self):
+        return self.location
+    
+    def get_stack_order(self):
+        return self.stack_order 
+    
+    def get_moved(self):
+        return self.moved
+    
+    def update_place(self, place):
+        self.place = place
+        
+    def new_location(self, location):
+        self.location = location
+    
+    def update_loc(self, location):
+        self.location += location
+    
+    def update_stack_order(self, order):
+        self.stack_order = order
+    
+    def update_moved(self):
+        self.moved = True
+        
+    def update_sort_order(self):
+        reverse = {1:5, 2:4, 3:3, 4:2, 5:1}
+        self.sort_order = self.location + (reverse[self.stack_order])*.1
+
+        
+class Dice_Event:
+    """
+    Creates Dice Events. Simulates dice roll and camel movement.
+    """
+        
+    def __init__(self, camel_list):
+        self.camel_list = camel_list
+        
+        #Set Default Stack (default location = 1)
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_stack_order(i+1)
+        
+        #Update place
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_place(i+1)
+
+    def __str__(self):
+        str_list = []
+        self.camel_list.sort()
+        for i in xrange(len(self.camel_list)):
+            str_list.append(str(self.camel_list[i]))
+        return str(str_list)
+    
+    def get_camel_list(self):
+        return self.camel_list
+    
+    def get_init_setup(self, setup = [[],[],[]]):
+        
+        self.setup_camels(setup)
+        
+        return ("Initial Position: "
+               + str(self.camel_list[0].get_name()) + "("
+               + str(self.camel_list[0].get_location()) + "), "
+               + str(self.camel_list[1].get_name()) + "("
+               + str(self.camel_list[1].get_location()) + "), "
+               + str(self.camel_list[2].get_name()) + "("
+               + str(self.camel_list[2].get_location()) + "), "
+               + str(self.camel_list[3].get_name()) + "("
+               + str(self.camel_list[3].get_location()) + "), "
+               + str(self.camel_list[4].get_name()) + "("
+               + str(self.camel_list[4].get_location()) + ") "
+              )
+    
+    def setup_camels(self, setup = [[],[],[]]):
+        self.camel_list = []
+        
+        #Updates location and orders each stack
+        #and appends to camel_list
+        if len(setup[0]) > 0:
+            for i in xrange(len(setup[0])):
+                setup[0][i].new_location(3)
+                setup[0][i].update_stack_order(i+1)
+                self.camel_list.append(setup[0][i])
+        else:
+            pass
+        if len(setup[1]) > 0:
+            for i in xrange(len(setup[1])):
+                setup[1][i].new_location(2)
+                setup[1][i].update_stack_order(i+1)
+                self.camel_list.append(setup[1][i])
+        else:
+            pass
+        if len(setup[2]) > 0:
+            for i in xrange(len(setup[2])):
+                setup[2][i].new_location(1)
+                setup[2][i].update_stack_order(i+1)
+                self.camel_list.append(setup[2][i])
+        else:
+            pass      
+        
+        #Sort Camels
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_sort_order()
+        
+        self.camel_list.sort()
+        
+        #Update place
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_place(i+1)
+
+        return self.camel_list
+        
+        
+    def reshuffle_camels(self):
+        pos_3 = []
+        pos_2 = []
+        pos_1 = []
+        
+        #Shuffle location
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].new_location(random.randrange(0, 3)+1)
+        
+        for i in xrange(len(self.camel_list)):
+            if self.camel_list[i].get_location() == 3:
+                pos_3.append(self.camel_list[i])
+            elif self.camel_list[i].get_location() == 2:
+                pos_2.append(self.camel_list[i])
+            else:
+                pos_1.append(self.camel_list[i])
+        
+        #Shuffle stack order
+        self.camel_list = []
+        
+        if len(pos_3) > 0:
+            for i in xrange(len(pos_3)): 
+                pos_3[i].update_stack_order(i+1)
+                self.camel_list.append(pos_3[i])
+        else:
+            pass
+        if len(pos_2) > 0:
+            for i in xrange(len(pos_2)): 
+                pos_2[i].update_stack_order(i+1)
+                self.camel_list.append(pos_2[i])
+        else:
+            pass
+        if len(pos_1) > 0:
+            for i in xrange(len(pos_1)): 
+                pos_1[i].update_stack_order(i+1)
+                self.camel_list.append(pos_1[i])
+        else:
+            pass
+        
+        #Sort Camels
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_sort_order()
+        
+        self.camel_list.sort()
+        
+        #Update place
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_place(i+1)
+        
+        #Reset temporary lists
+        pos_3 = []
+        pos_2 = []
+        pos_1 = []
+            
+    def move_camel(self, camel, roll_result):
+        new_stack = []
+        old_stack = []
+        remaining_camels = []
+        unaffected_camels = []
+        
+        self.camel_list.sort()
+        
+        #Updates the location of the camels
+        initial_loc = camel.get_location()
+        initial_stack = camel.get_stack_order()
+        
+        for i in xrange(len(self.camel_list)):
+            if (initial_loc == self.camel_list[i].get_location() and
+                initial_stack >= self.camel_list[i].get_stack_order()):
+                self.camel_list[i].update_loc(roll_result)
+                camel.update_moved()
+                new_stack.append(self.camel_list[i])
+            elif (initial_loc == self.camel_list[i].get_location() and
+                initial_stack < self.camel_list[i].get_stack_order()):
+                old_stack.append(self.camel_list[i])
+            else:
+                remaining_camels.append(self.camel_list[i])
+        
+        #Check to see if moved camels landed on an any existing camels' location
+        #if so then add those camels to the list and sort them to the bottom
+        
+        if len(remaining_camels) > 0:
+            for i in xrange(len(remaining_camels)):
+                if new_stack[0].get_location() == remaining_camels[i].get_location():
+                    new_stack.append(remaining_camels[i])
+                else:
+                    unaffected_camels.append(remaining_camels[i])
+        else:
+            pass
+        
+        
+        #Orders New Stack
+        for i in xrange(len(new_stack)):
+            new_stack[i].update_stack_order(i+1)
+        
+        #Orders Old Stack
+        if len(old_stack) > 0:
+            for i in xrange(len(old_stack)):
+                old_stack[i].update_stack_order(i+1)        
+        
+        
+        #Append all to unranked_list
+        self.camel_list = []
+        
+        for i in xrange(len(new_stack)):
+            self.camel_list.append(new_stack[i])
+        if len(old_stack) > 0:
+            for i in range(len(old_stack)):
+                self.camel_list.append(old_stack[i])
+        else:
+            pass
+        if len(unaffected_camels) > 0:
+            for i in xrange(len(unaffected_camels)):
+                self.camel_list.append(unaffected_camels[i])
+        else:
+            pass
+        
+        
+        #Sort Camels
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_sort_order()
+        
+        self.camel_list.sort()
+        
+        #Update place
+        for i in xrange(len(self.camel_list)):
+            self.camel_list[i].update_place(i+1)
+        
+        #Reset temporary lists
+        new_stack = []
+        old_stack = []
+        remaining_camels = []
+        unaffected_camels = []
+
+class Round_Event:
+    """
+    Creates Round Events. Simulates a round of Camel Cup. 
+    Prints results. Returns 1st and 2nd place. 
+    """
+    
+    def __init__(self, dice_event):
+        self.d_event = dice_event
+    
+    def play_r_suppress(self):
+        camel_shuffled = []
+        
+        for i in xrange(len(self.d_event.get_camel_list())):
+            camel_shuffled.append(self.d_event.get_camel_list()[i])
+        
+        #print self.d_event #prints details
+        
+        #1st Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #2nd Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #3rd Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #4th Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #Final Camel move:
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        #print self.d_event #prints details
+        #print self.d_event #prints details
+        camel_shuffled = []
+        
+        #Returns 1st and 2nd place in a list        
+        return [self.d_event.get_camel_list()[0], 
+                self.d_event.get_camel_list()[1]]
+     
+    def play_round(self):
+        camel_shuffled = []
+        
+        for i in range(len(self.d_event.get_camel_list())):
+            camel_shuffled.append(self.d_event.get_camel_list()[i])
+        
+        print ("Initial Pos: "
+               + str(self.d_event.get_camel_list()[0].get_name()) + "("
+               + str(self.d_event.get_camel_list()[0].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[1].get_name()) + "("
+               + str(self.d_event.get_camel_list()[1].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[2].get_name()) + "("
+               + str(self.d_event.get_camel_list()[2].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[3].get_name()) + "("
+               + str(self.d_event.get_camel_list()[3].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[4].get_name()) + "("
+               + str(self.d_event.get_camel_list()[4].get_location()) + ") "
+              )
+        #print self.d_event #prints details
+        
+        #1st Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        print (str(camel_shuffled[0].get_name()) + " " + 
+               "moved " + str(dice_roll) + " spaces")
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #2nd Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        print (str(camel_shuffled[0].get_name()) + " " + 
+               "moved " + str(dice_roll) + " spaces")
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #3rd Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        print (str(camel_shuffled[0].get_name()) + " " + 
+               "moved " + str(dice_roll) + " spaces")
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #4th Camel move:
+        random.shuffle(camel_shuffled)
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        print (str(camel_shuffled[0].get_name()) + " " + 
+               "moved " + str(dice_roll) + " spaces")
+        #print self.d_event #prints details
+        camel_shuffled.remove(camel_shuffled[0])
+        
+        #Final Camel move:
+        dice_roll = (random.randrange(0, 3)+1)
+        self.d_event.move_camel(camel_shuffled[0], 
+                               dice_roll)
+        print (str(camel_shuffled[0].get_name()) + " " + 
+               "moved " + str(dice_roll) + " spaces")
+        #print self.d_event #prints details
+
+        print ("Final Pos: "
+               + str(self.d_event.get_camel_list()[0].get_name()) + "("
+               + str(self.d_event.get_camel_list()[0].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[1].get_name()) + "("
+               + str(self.d_event.get_camel_list()[1].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[2].get_name()) + "("
+               + str(self.d_event.get_camel_list()[2].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[3].get_name()) + "("
+               + str(self.d_event.get_camel_list()[3].get_location()) + "), "
+               + str(self.d_event.get_camel_list()[4].get_name()) + "("
+               + str(self.d_event.get_camel_list()[4].get_location()) + ") "
+              )
+        #print self.d_event #prints details
+        
+        print ("=====")
+        print ("Round Results: "
+               + str(self.d_event.get_camel_list()[0].get_name()) + "=1st, " 
+               + str(self.d_event.get_camel_list()[1].get_name()) + "=2nd, "
+               + str(self.d_event.get_camel_list()[2].get_name()) + "=3nd, "
+               + str(self.d_event.get_camel_list()[3].get_name()) + "=4th, "
+               + str(self.d_event.get_camel_list()[4].get_name()) + "=5th "
+              )
+        print ("=====")
+        camel_shuffled = []
+        
+        #Returns 1st and 2nd place in a list        
+        return [self.d_event.get_camel_list()[0], 
+                self.d_event.get_camel_list()[1]]
+                
+    
+#Initiates Objects Note: must have 5 camels
+Blue = Camel("B")
+Red = Camel("R")
+Green = Camel("G")
+Yellow = Camel("Y")
+White = Camel("W")
+
+Event1 = Dice_Event([Blue, Red, Green, Yellow, White])
+Round1 = Round_Event(Event1)
+
+###Tests Camel and Dice Event Classes
+
+#Event1.move_camel(Yellow, 3)
+#print Event1
+
+#Event1.move_camel(White, 2)
+#print Event1
+
+#Event1.move_camel(Blue, 3)
+#print Event1
+
+#Event1.move_camel(Red, 3)
+#print Event1
+
+#Event1.reshuffle_camels()
+#print Event1
+
+#Event1.setup_camels([[Blue, Green],[Yellow, Red],[White]])
+#print Event1
+
+#Round1.play_round()
+
+
+#=====Monte Carlo Simulation 
+
+def montecarlo_pkwinner(picked_camel, setup_pos,
+                         trials = 1, shuffle = False): 
+    """
+    Basic Monte Carlo simulation. Simulates a round of Camel Cup. 
+    Computer picks one of the five camels, determines if won or lost.
+    Returns percent of trials in which number of observations 
+    in which cpu wins with a given initial pick.
+    
+    Make sure set up position is correctly, specifically:
+    
+    -make sure there are no duplicate camels.
+    
+    -if one of the three position is left blank it still must be specified
+    with an empty list.
+    --example: [[Blue, Green, Yellow],[Red, White], []]
+    
+    -make sure you are not missing a camel.
+    
+    -make sure setup inputs match the innitialized class objects 
+    (in other words, correct spelling of the camel names).
+    
+    """
+    
+    #Prints initial setup
+    print Event1.get_init_setup(setup_pos)
+    
+    #Picks each Camel
+    for i in xrange(len(picked_camel)):
+        
+        #Determins whether picked camel matches winner
+        #if true adds 1 to the observed events
+        observed_events = 0
+        observed_second = 0
+        for j in xrange(trials):
+        
+            #Uses set positions unless shuffle is true
+            if shuffle == False:
+                event = Event1.setup_camels(setup_pos)
+            else:
+                event = Event1.reshuffle_camels()
+        
+            #Determine if picked winner
+            winner = Round1.play_r_suppress()[0]
+            second = Round1.play_r_suppress()[1]
+            
+            if picked_camel[i] == winner:
+                observed_events += 1
+            elif picked_camel[i] == second:
+                observed_second += 1
+            else:
+                pass
+
+        # Return expectation of the event
+        percent_1st = float(observed_events) / float(trials)
+        percent_2nd = float(observed_second) / float(trials)
+        percent_fail = 1 - (percent_1st + percent_2nd)
+        
+        # Expected Value of betting on 1 camel
+        ev_5 = 5*percent_1st + 1*percent_2nd - 1*percent_fail
+        ev_3 = 3*percent_1st + 1*percent_2nd - 1*percent_fail
+        ev_2 = 2*percent_1st + 1*percent_2nd - 1*percent_fail
+        
+        # Expected Value of making multiple bets on 1 camel
+        ev_5_3 = ev_5 + ev_3
+        ev_5_2 = ev_5 + ev_2
+        ev_3_2 = ev_3 + ev_2
+        
+        #Detailed Expression: Expected Value
+        print (str(picked_camel[i].get_name()) + ": " 
+               + "1st=" + str(int(percent_1st*100)) + "% " 
+               + "2nd=" + str(int(percent_2nd*100)) + "%, "
+               + "ev(5)=$" + str(ev_5) + " "
+               + "ev(3)=$" + str(ev_3) + " "
+               + "ev(2)=$" + str(ev_2))
+        
+        #Simple Expression: Number of observations of first and second
+        #print (str(picked_camel[i].get_name()) + " " 
+               #+ str(int(observed_events)) + " " 
+               #+ str(int(observed_second)))
+    print ("=====")
+
+    
+##################  Playing Camel Cup  #####################
+
+#=====Simulates the winning percentage
+montecarlo_pkwinner(Event1.get_camel_list(), 
+                    [[Blue,Green],[White,Red],[Yellow]], 
+                    trials = 100)
+
+#=====Simulates the non-losing percentage
+#montecarlo_pk1or2(Event1.get_camel_list(), 
+                    #[[Blue],[Green,White],[Red,Yellow]], 
+                    #trials = 100)
+
+#=====Setup and play one round of Camel Cup
+#Event1.setup_camels([[Blue, Green],[Yellow, Red],[White]])
+#Round1.play_round()

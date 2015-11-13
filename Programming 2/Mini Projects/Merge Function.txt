@@ -1,0 +1,48 @@
+"""
+Merge function for 2048 game.
+"""
+
+def merge(line):
+    """
+    Function that merges a single row or column in 2048.
+    """
+    
+    #Creates lists of a list of non-zero values
+    merged = False
+    result_list = []
+    nonzero_list = []
+    
+    for num in range(len(line)):
+        if line[num] > 0:
+            nonzero_list.append(line[num])
+        else:
+            pass
+    
+    #if a value is repeated consecutively take multiply 
+    #it by 2 and append to list 
+    for num in range(0, len(nonzero_list) - 1):
+        if (nonzero_list[num] == nonzero_list[num+1] and merged == False):
+            result_list.append(nonzero_list[num]*2)
+            merged = True
+        elif (nonzero_list[num] != nonzero_list[num+1] and merged == False):
+            result_list.append(nonzero_list[num])
+        else:
+            merged = False
+    
+    #if remaining value is not zero append it to the list
+    if (len(nonzero_list) >= 1 and nonzero_list[-1] != 0 
+        and merged == False):
+        result_list.append(nonzero_list[-1])
+    else:
+        pass
+    
+    #if length of new list does not equal the length of the 
+    #old list then append zeros to the end until it is 
+    while len(result_list) != len(line):
+        result_list.append(0)
+        
+    return result_list
+
+#merge_line = merge([0])
+
+#print merge_line

@@ -1,0 +1,147 @@
+import random
+from kivy.app import App
+from kivy.clock import Clock
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.graphics import Color, Rectangle
+from kivy.core.window import Window
+from kivy.uix.image import Image
+
+BACKGROUND_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/background.png"
+BIRD_WINGUP_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-up"
+BIRD_WINGMID_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-mid"
+BIRD_WINGDOWN_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-down"
+GROUND_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/ground.png"
+TOP_PIPE_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/pipe_top.png"
+BOTTOM_PIPE_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/pipe_bottom.png"
+
+#atlas file: bird_anim.atlas, JSON file containing the pixel positions of the frames in the image:
+#{
+# "bird_anime.png": {
+    #"wing-up": [1, 1, 34, 24],
+    #"wing-mid": [37, 1, 34, 24],
+    #"wing-down": [73, 1, 34, 24]
+    #}
+#}
+
+class Sprite(Image):
+    def __init__(self, **kwargs):
+        super(Sprite, self).__init__(**kwargs)
+        self.size = self.texture_size
+
+class Bird(Sprite):
+    def __init__(self, pos):
+        super(Bird, self).__init__(source=BIRD_WINGUP_IMAGE, pos=pos)
+        self.velocity_y = 0
+        self.gravity = -.3
+
+    def update(self):
+        self.velocity_y += self.gravity
+        self.velocity_y = max(self.velocity_y, -10)
+        self.y += self.velocity_y
+        if self.velocity_y < -5:
+            self.source = BIRD_WINGUP_IMAGE
+        elif self.velocity_y < 0:
+            self.source = BIRD_WINGMID_IMAGE
+
+    def on_touch_down(self, *ignore):
+        self.velocity_y = 4.5
+        self.source = BIRD_WINGDOWN_IMAGE
+
+class Background(Widget):
+    def __init__(self, source):
+        super(Background, self).__init__()
+        self.image = Sprite(source=source)
+        self.add_widget(self.image)
+        self.size = self.image.size
+        self.image_dupe = Sprite(source=source, x=self.width)
+        self.add_widget(self.image_dupe)
+
+    def update(self):
+        self.image.x -= 2
+        self.image_dupe.x -= 2
+
+        if self.image.right <= 0:
+            self.image.x = 0
+            self.image_dupe.x = self.width
+
+class Ground(Sprite):
+    def update(self):
+        self.x -= 2
+        if self.x < -24: #Note: Ground repeats at 24px
+            self.x += 24
+
+class Pipe(Widget):
+    def __init__(self, pos):
+        super(Pipe, self).__init__(pos=pos)
+        self.top_image = Sprite(source=TOP_PIPE_IMAGE)
+        self.top_image.pos = (self.x, self.y + 3.5*24) #Space Between the Pipes are 3.5 birds apart.
+        self.add_widget(self.top_image)
+        self.bottom_image = Sprite(source=BOTTOM_PIPE_IMAGE)
+        self.bottom_image.pos = (self.x, self.y - self.bottom_image.height)
+        self.add_widget(self.bottom_image)
+        self.width = self.top_image.width
+        self.scored = False
+
+    def update(self):
+        self.x -= 2
+        self.top_image.x = self.bottom_image.x = self.x
+        if self.right < 0:
+            self.parent.remove_widget(self)
+
+class Pipe_set(Widget):
+    add_pipe = 0
+    def update(self, dt):
+        for child in list(self.children):
+            child.update()
+        self.add_pipe -= dt
+        if self.add_pipe < 0:
+            y = random.randint(self.y + 50, self.height - 50 - 3.5*24)
+            self.add_widget(Pipe(pos=(self.width, y)))
+            self.add_pipe = 4.5
+
+class Game(Widget):
+    def __init__(self):
+        super(Game, self).__init__()
+        self.background = Background(source=BACKGROUND_IMAGE)
+        self.size = self.background.size
+        self.add_widget(self.background)
+        self.ground = Ground(source=GROUND_IMAGE)
+        self.pipe_set = Pipe_set(pos=(0, self.ground.height), size=self.size)
+        self.add_widget(self.pipe_set)
+        self.add_widget(self.ground)
+        self.bird = Bird(pos=(20, self.height / 2))
+        self.add_widget(self.bird)
+        Clock.schedule_interval(self.update, 3.5/60.0)
+        self.game_over = False
+        self.score = 0
+
+    def update(self, dt):
+        self.background.update()
+        self.bird.update()
+        self.ground.update()
+        self.pipe_set.update(dt)
+
+        if self.bird.collide_widget(self.ground):
+            self.game_over = True
+        for pipe in self.pipe_set.children:
+            if pipe.top_image.collide_widget(self.bird):
+                self.game_over = True
+            elif pipe.bottom_image.collide_widget(self.bird):
+                self.game_over = True
+            elif not pipe.scored and pipe.right < self.bird.x:
+                pip.scored = True
+                self.score += 1
+
+        if self.game_over:
+            print("Game Over! Score:", self.score)
+
+class GameApp(App):
+    def build(self):
+        #return Game()
+        game = Game()
+        Window.size = game.size
+        return game
+
+if __name__ == "__main__":
+    GameApp().run()

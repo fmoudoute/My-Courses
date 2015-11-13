@@ -1,0 +1,7 @@
+examples
+*.key
+*python-for-android
+bin
+buildozer
+.buildozer
+*.graffle

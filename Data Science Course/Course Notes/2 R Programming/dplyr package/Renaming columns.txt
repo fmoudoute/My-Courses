@@ -5,6 +5,7 @@ chicago_data <- readRDS("chicago.rds")
 names(chicago_data)
 
 #rename variable
-chicago_data <- rename(chicago_data, pm25 = pm25tmean2,
+chicago_data <- rename(chicago_data, New.Name = Old.Name
+		       pm25 = pm25tmean2,
                        dewpoint = dptp)
 head(chicago_data)

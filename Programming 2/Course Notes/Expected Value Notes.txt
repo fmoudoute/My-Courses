@@ -1,0 +1,30 @@
+Expected Value of a Dice:
+
+Value	 Prob
+1	1/6
+2	1/6
+3	1/6
+4	1/6
+5	1/6
+6	1/6
+
+Expected Value = 3.5
+EV = 1(1/6) + 2(1/6) + 3(1/6) .... + 6(1/6) = 3.5
+
+
+Expected Value of 2 Die:
+
+Value Prob
+2	1/36
+3	2/36
+4	3/36
+5	4/36
+6	5/36
+7	6/36
+8	5/36
+9	4/36
+10	3/36
+11	2/36
+12	1/36
+
+Expected Value = 7

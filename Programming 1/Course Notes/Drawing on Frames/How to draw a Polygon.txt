@@ -1,0 +1,17 @@
+import simplegui
+
+def draw_handler(canvas):
+    canvas.draw_polygon([[2*80, 10],
+                             [(2+1)*80, 10],
+                             [(2+1)*80, 50],
+                             [2*80, 50]]
+                        , 2.5, "Red", "Green")
+    #canvas.draw_polygon([[topleft_x, topleft_y],
+                             #[topright_x, topright_y],
+                             #[bottomright_x, bottomright_y],
+                             #[bottomleft_x, bottomleft_y]]
+                        #, line_thick, "Outline", "Fill")
+
+frame = simplegui.create_frame('Testing', 500, 500)
+frame.set_draw_handler(draw_handler)
+frame.start()

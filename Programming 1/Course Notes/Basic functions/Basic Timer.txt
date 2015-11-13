@@ -1,0 +1,23 @@
+#Stopwatch Program
+#Enjoy the game :)
+#Yours, D'Cypher
+
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+import math
+
+#=====Global timer
+count_sec = 0
+
+def tick():
+    global count_sec
+    count_sec += 0.1
+    print count_sec
+    
+timer = simplegui.create_timer(100, tick)
+
+#Start frame and timer
+timer.start()
+#timer.stop() to stop

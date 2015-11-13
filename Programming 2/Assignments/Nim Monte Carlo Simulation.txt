@@ -1,0 +1,117 @@
+"""
+A simple Monte Carlo solver for Nim
+http://en.wikipedia.org/wiki/Nim#The_21_game
+"""
+
+import random
+import codeskulptor
+codeskulptor.set_timeout(20)
+
+MAX_REMOVE = 3
+#TRIALS = 10000
+
+
+def simulate_game(innit_move, num_items):
+    """
+    Simulates a game of Nim. Returns Cpu won or lost. 
+    """
+    
+    #innit_move = random.randrange(0, MAX_REMOVE) + 1 #For testing
+    turn = 1
+    remaining_items = num_items - innit_move
+    
+    
+    while remaining_items > 0:
+        rand_num = random.randrange(0, MAX_REMOVE) + 1
+        remaining_items -= rand_num
+        if turn % 2 == 0:
+            turn = 1
+        elif turn % 2 == 1:
+            turn = 0
+        else:
+            pass
+        
+        if remaining_items < 0:
+            turn = 0
+        else:
+            pass
+            
+    #return [innit_move, turn, remaining_items] #For testing
+    
+    if turn == 0:
+        return False
+    elif turn == 1:
+        return True
+    else:
+        pass
+
+def montecarlo_simulation(innit_move, num_items, trials):
+    """
+    Basic Monte Carlo simulation. Returns percent of trials in which 
+    number of observations in which cpu wins with a given innitial move.
+    """
+    observed_events = 0
+    for i in range(trials):
+        win = simulate_game(innit_move, num_items)
+        if win == True:
+            observed_events += 1
+        else:
+            pass
+
+    # Return expectation of the event
+    return float(observed_events) / float(trials)
+    
+def evaluate_position(num_items, trials = 1000):
+    """
+    Applies the Monte Carlo simulation to determine the best move for Nim.
+    Returns the % wins for every possible move then picks the one with the 
+    highest %.
+    """
+    
+    pick_options = []
+    trial_results = []
+    
+    for i in range(MAX_REMOVE):
+        pick_options.append(i+1)
+    
+    for i in pick_options:
+        percent_win = montecarlo_simulation(i, num_items, trials)
+        trial_results.append(percent_win)
+
+    pos_id = trial_results.index(max(set(trial_results)))
+    
+    choice_move = pick_options[pos_id]
+    
+    #return [trial_results, pos_id, choice_move] #For testing
+    return choice_move
+
+def play_game(start_items):
+    """
+    Play game of Nim against Monte Carlo bot
+    """
+    
+    current_items = start_items
+    print "Starting game with value", current_items
+    while True:
+        comp_move = evaluate_position(current_items)
+        current_items -= comp_move
+        print "Computer choose", comp_move, ", current value is", current_items
+        if current_items <= 0:
+            print "Computer wins"
+            break
+
+        player_move = int(input("Enter your current move"))
+        current_items -= player_move
+        print "Player choose", player_move, ", current value is", current_items
+        if current_items <= 0:
+            print "Player wins"
+            break
+            
+
+
+play_game(21)
+#print montecarlo_simulation(1, 21, 1000) #For testing
+#print evaluate_position(21, 1000) #For testing
+    
+                 
+   

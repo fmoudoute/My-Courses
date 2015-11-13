@@ -1,0 +1,50 @@
+#Import Image Template
+
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+    
+import random
+import math
+
+class ImageInfo:
+    def __init__(self, center, size, radius = 0):
+        self.center = center
+        self.size = size
+        self.radius = radius
+
+    def get_center(self):
+        return self.center
+
+    def get_size(self):
+        return self.size
+
+    def get_radius(self):
+        return self.radius
+
+CANVAS_WIDTH = 334
+CANVAS_HEIGHT = 600
+
+iphone_info = ImageInfo([580/2+10, 1200/2+30], [540, 1080])
+iphone_image = simplegui.load_image("https://static-cdn.fullcontact.com/images/website/iphone5.png")
+
+splash_info = ImageInfo([56, 46], [80, 85])
+splash_image = simplegui.load_image("http://commondatastorage.googleapis.com/codeskulptor-assets/lathrop/splash.png")
+
+
+
+def draw(canvas):
+    canvas.draw_image(iphone_image, iphone_info.get_center(), iphone_info.get_size(), 
+                      [CANVAS_WIDTH / 2, CANVAS_HEIGHT / 2], [CANVAS_WIDTH, CANVAS_HEIGHT])
+
+    
+#create frame
+frame = simplegui.create_frame("Mind Match", CANVAS_WIDTH, CANVAS_HEIGHT)
+frame.set_canvas_background("White")
+
+#create buttons and canvas callback
+frame.set_draw_handler(draw)
+
+# get things rolling
+frame.start()

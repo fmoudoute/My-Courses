@@ -1,0 +1,33 @@
+from kivy.app import App
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.graphics import Color, Rectangle
+from kivy.core.window import Window
+from kivy.uix.image import Image
+
+BACKGROUND_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Example Projects/r1chardj0n3s-kivy-game-tutorial-a8275f381cd7/flappy/images/background.png"
+BIRD_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Example Projects/r1chardj0n3s-kivy-game-tutorial-a8275f381cd7/flappy/images/bird.png"
+
+class Sprite(Image):
+    def __init__(self, **kwargs):
+        super(Sprite, self).__init__(**kwargs)
+        self.size = self.texture_size
+
+class Game(Widget):
+    #pass
+    def __init__(self):
+        super(Game, self).__init__()
+        self.background = Sprite(source=BACKGROUND_IMAGE)
+        self.size = self.background.size
+        self.add_widget(self.background)
+        self.add_widget(Sprite(source=BIRD_IMAGE))
+
+class GameApp(App):
+    def build(self):
+        #return Game()
+        game = Game()
+        Window.size = game.size
+        return game
+
+if __name__ == "__main__":
+    GameApp().run()

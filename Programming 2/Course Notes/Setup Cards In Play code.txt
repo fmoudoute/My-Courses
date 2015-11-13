@@ -1,0 +1,45 @@
+import random
+import math
+
+class Setup_Cards_IP:
+    def __init__(self, card_list):
+        self.card_list = card_list
+        self.hand_list = []
+    def __str__(self):
+        return str(self.card_list + "," + self.hand_list)	
+            #return a string representation of cards in play
+    
+    def new_card_IDs(self):
+        max_range = range(0,10)
+        num_newrand = len(max_range) - len(self.hand_list)
+        
+        temp_hand = []
+        final_rand_ls = set([])
+        
+        #Transform cards into tuples and adds to final_rand_ls
+        if len(self.hand_list) > 0:
+            for i in range(len(self.hand_list)):
+                nonrand_item = tuple(self.hand_list[i])
+                temp_hand.append(nonrand_item)
+                final_rand_ls.add(nonrand_item)
+        else:
+            pass
+        
+        #Creates the new random cards
+        while (len(final_rand_ls) < len(max_range) - 1): 
+            rand_item = tuple([random.randrange(0,17), 
+                               random.randrange(0,5)])
+            final_rand_ls.add(rand_item)
+            
+        #Removes the cards in hand from final_rand_ls
+        if len(self.hand_list) > 0:
+            for i in range(len(temp_hand)):
+                final_rand_ls.remove(temp_hand[i])
+        else:
+            pass
+
+        return final_rand_ls #For Testing 
+            
+game1 = Setup_Cards_IP([1,2,3,4,5,6,7,8,9])
+
+print game1.new_card_IDs()

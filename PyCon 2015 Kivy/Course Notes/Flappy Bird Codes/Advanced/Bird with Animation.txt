@@ -1,0 +1,102 @@
+from kivy.app import App
+from kivy.clock import Clock
+from kivy.uix.widget import Widget
+from kivy.uix.button import Button
+from kivy.graphics import Color, Rectangle
+from kivy.core.window import Window
+from kivy.uix.image import Image
+
+BACKGROUND_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/background.png"
+BIRD_WINGUP_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-up"
+BIRD_WINGMID_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-mid"
+BIRD_WINGDOWN_IMAGE = "atlas://C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/bird_anim/wing-down"
+GROUND_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/ground.png"
+TOP_PIPE_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/pipe_top.png"
+BOTTOM_PIPE_IMAGE = "C:/Users/wcai/Desktop/5 Personal Projects/My Courses/Kivy/Mini Projects/Flappy Bird Clone/images/pipe_bottom.png"
+
+#atlas file: bird_anim.atlas, JSON file containing the pixel positions of the frames in the image:
+#{
+# "bird_anime.png": {
+    #"wing-up": [1, 1, 34, 24],
+    #"wing-mid": [37, 1, 34, 24],
+    #"wing-down": [73, 1, 34, 24]
+    #}
+#}
+
+class Sprite(Image):
+    def __init__(self, **kwargs):
+        super(Sprite, self).__init__(**kwargs)
+        self.size = self.texture_size
+
+class Bird(Sprite):
+    def __init__(self, pos):
+        super(Bird, self).__init__(source=BIRD_WINGUP_IMAGE, pos=pos)
+        self.velocity_y = 0
+        self.gravity = -.3
+
+    def update(self):
+        self.velocity_y += self.gravity
+        self.velocity_y = max(self.velocity_y, -10)
+        self.y += self.velocity_y
+        if self.velocity_y < -5:
+            self.source = BIRD_WINGUP_IMAGE
+        elif self.velocity_y < 0:
+            self.source = BIRD_WINGMID_IMAGE
+
+    def on_touch_down(self, *ignore):
+        self.velocity_y = 5.5
+        self.source = BIRD_WINGDOWN_IMAGE
+
+
+class Background(Widget):
+    def __init__(self, source):
+        super(Background, self).__init__()
+        self.image = Sprite(source=source)
+        self.add_widget(self.image)
+        self.size = self.image.size
+        self.image_dupe = Sprite(source=source, x=self.width)
+        self.add_widget(self.image_dupe)
+
+    def update(self):
+        self.image.x -= 2
+        self.image_dupe.x -= 2
+
+        if self.image.right <= 0:
+            self.image.x = 0
+            self.image_dupe.x = self.width
+
+class Ground(Sprite):
+    def update(self):
+        self.x -= 2
+        if self.x < -24: #Note: Ground repeats at 24px
+            self.x += 24
+
+class Game(Widget):
+    def __init__(self):
+        super(Game, self).__init__()
+        self.background = Background(source=BACKGROUND_IMAGE)
+        self.size = self.background.size
+        self.add_widget(self.background)
+        self.ground = Ground(source=GROUND_IMAGE)
+        self.add_widget(self.ground)
+        self.bird = Bird(pos=(20, self.height / 2))
+        self.add_widget(self.bird)
+        Clock.schedule_interval(self.update, 5/60.0)
+
+    def update(self, *ignore):
+        self.background.update()
+        self.bird.update()
+        self.ground.update()
+
+        if self.bird.collide_widget(self.ground):
+            print("Game Over!")
+
+class GameApp(App):
+    def build(self):
+        #return Game()
+        game = Game()
+        Window.size = game.size
+        return game
+
+if __name__ == "__main__":
+    GameApp().run()
