@@ -35,11 +35,11 @@ brew doctor
 ```
 
 A couple notes here: 
-*I think the official guide on the kivy website does not include "xcode-select --install". It is really import to run this and make sure there are no errors that pop up.
-*Double check "brew link libtool" make sure it's linked.
-*Cython is the source of a lot of problems, make sure that you have the correct version of cython and there are no errors. There was an annoying issue with not having the right admin premission using just "pip install". I think "sudo pip install" works the best. 
-*I would select xcode again once everything is set up. I found a lot of issues with xcode somehow not being selected or being incorrectly selected. First, make sure xcode is version 6.4 and it is in your applications folder and that "/Applications/Xcode.app" is the right path. Then run "sudo xcode-select —switch /Applications/Xcode.app". 
-*Lastly, run "brew doctor" to make sure there are no other outstanding errors.
+* I think the official guide on the kivy website does not include "xcode-select --install". It is really import to run this and make sure there are no errors that pop up.
+* Double check "brew link libtool" make sure it's linked.
+* Cython is the source of a lot of problems, make sure that you have the correct version of cython and there are no errors. There was an annoying issue with not having the right admin premission using just "pip install". I think "sudo pip install" works the best. 
+* I would select xcode again once everything is set up. I found a lot of issues with xcode somehow not being selected or being incorrectly selected. First, make sure xcode is version 6.4 and it is in your applications folder and that "/Applications/Xcode.app" is the right path. Then run "sudo xcode-select —switch /Applications/Xcode.app". 
+* Lastly, run "brew doctor" to make sure there are no other outstanding errors.
 
 If everything is working “brew doctor” should just give you one warning telling you your Xcode 6.4 is out of date.
 
