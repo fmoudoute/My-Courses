@@ -30,7 +30,7 @@ brew install autoconf automake libtool pkg-config
 brew link libtool 
 sudo easy_install pip 
 sudo pip install cython==0.21.2
-sudo xcode-select —switch /Applications/Xcode.app
+sudo xcode-select --switch /Applications/Xcode.app
 brew doctor
 ```
 
