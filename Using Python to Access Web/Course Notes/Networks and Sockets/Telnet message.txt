@@ -1,0 +1,23 @@
+"""
+Sending and Recieving Data with Sockets
+Need to use telnet to send a message
+"""
+import socket
+import sys
+
+host = ""
+port = 7777
+
+headjack = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+    headjack.bind((host, port))
+except socket.error as error:
+    print(str(error))
+
+headjack.listen(5)
+
+connection, address = headjack.accept()
+
+print("connected to: "+address[0]+":"+str(address[1]))
+

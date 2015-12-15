@@ -1,0 +1,24 @@
+"""
+Client Side
+Sending and Recieving Data with Sockets
+"""
+import socket
+
+host = ""
+port = 7777
+
+headjack = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+try:
+    headjack.connect((host, port))# client-side uses connect, connects to a host
+except socket.error as error:
+    print(str(error))
+
+while True:
+    message = input("Your Message: ") #raw_input() for python 2.7
+    headjack.send(str.encode(message))
+    print("Awaiting reply")
+    reply = headjack.recv(1024) # 1024 is max data that can be received
+    print("Received ", repr(reply.decode("utf-8")))
+
+headjack.close()

@@ -25,12 +25,12 @@ You will also need Homebrew, which will make getting the additional dependencies
 Once you have Homebrew set up, use the following codes in your terminal:
 
 ```
-xcode-select —-install 
+xcode-select --install 
 brew install autoconf automake libtool pkg-config 
 brew link libtool 
 sudo easy_install pip 
 sudo pip install cython==0.21.2
-sudo xcode-select —switch /Applications/Xcode.app
+sudo xcode-select --switch /Applications/Xcode.app
 brew doctor
 ```
 
@@ -65,6 +65,7 @@ Once the compile is complete you can start creating Xcode projects.
 Use the following code to create the Touchtracer demo app. Make sure that the path refers to the location of the “main.py” file. 
 
 ```
+$ cd kivy-ios
 $ ./toolchain.py create Touchtracer /Applications/Kivy.app/Contents/Resources/kivy/examples/demo/touchtracer
 $ open touchtracer-ios/touchtracer.xcodeproj
 ```
@@ -72,6 +73,13 @@ $ open touchtracer-ios/touchtracer.xcodeproj
 To create other projects, simply replace “Touchtracer” with the name you want to call your new project, followed by the file path of the python file for your project. Again make sure that the python file is named “main.py”.
 
 If everything works, when you press the “play” button in Xcode and you will be able to play with the touchtracer in the IOS simulator. 
+
+Use this code to update the project once you have already created it:
+
+```
+$ cd kivy-ios
+$ ./toolchain.py update touchtracer-ios
+```
 
 There might be three non-fatal “Apple Mach-O Linker Warnings” that will pop up in your Xcode, something like: “ld: warning: directory not found for option '-F/Users/tingbochen/kivy-ios/dist/frameworks’”, these can be ignored. 
 

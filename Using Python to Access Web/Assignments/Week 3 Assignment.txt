@@ -1,0 +1,13 @@
+"""
+URL Lib
+
+"""
+import urllib.request
+#python 2.7: import urllib
+headjack = urllib.request.urlopen("http://www.pythonlearn.com/code/intro-short.txt")
+#python 2.7: urllib.urlopen()
+
+for line in headjack:
+    print(line.strip())
+
+print(headjack.info())

@@ -1,0 +1,16 @@
+"""
+Frequency of Words in Webpage
+
+"""
+import urllib.request
+#python 2.7: import urllib
+headjack = urllib.request.urlopen("http://www.py4inf.com/code/romeo.txt")
+#python 2.7: urllib.urlopen()
+
+#Non Regular Expression:
+counts = dict()
+for line in headjack:
+    word_ls = line.split()
+    for i in word_ls:
+        counts[i] = counts.get(i,0) + 1
+print(counts)

@@ -1,0 +1,18 @@
+"""
+Finding the Spam Confidence Lines Example
+"""
+import re
+
+#Extracting the stuff after X-DSPAM-Confidence
+hand = open("mbox-short.txt")
+numlist = []
+
+for line in hand:
+    line = line.rstrip()
+    spam_conf = re.findall("^X-DSPAM-Confidence: ([0-9.]+)", line)
+
+    if len(spam_conf) !=1 : continue
+    num = float(spam_conf[0])
+    numlist.append(num)
+
+print(numlist)

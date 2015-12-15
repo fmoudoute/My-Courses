@@ -1,0 +1,32 @@
+"""
+Greedy NonGreedy Extractions
+
+re.findall() - Match strings that are exact
+[0-9] - atleast one digits
++  - one or more of something
+\ - get regular expression to behave like a normal expression
+"""
+import re
+
+#Finds all digits in a sentence, Return a list.
+x = "My 2 favorite numbers are 19 and 42"
+y = re.findall("[0-9]+", x)
+print(y)
+
+z = re.findall("[AEIOU]+", x)
+print(z)
+
+#Greedy - greedy means it wants to return the largest possible string.
+x = "From: Using the : character"
+y = re.findall("^F.+:", x) #First charcter is "F", one or more characters and last is ":"
+print(y)
+
+#Non-Greedy
+x = "From: Using the : character"
+y = re.findall("^F.+?:", x) #Prefer the smaller
+print(y)
+
+#Escape Character
+x = "We just recieved $10.00 for cookies."
+y = re.findall("\$[0-9.]+", x)
+print(y)

@@ -1,0 +1,11 @@
+"""
+URL Lib
+
+"""
+import urllib.request
+#python 2.7: import urllib
+headjack = urllib.request.urlopen("http://www.py4inf.com/code/romeo.txt")
+#python 2.7: urllib.urlopen()
+
+for line in headjack:
+    print(line.strip())
