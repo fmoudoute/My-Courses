@@ -32,6 +32,7 @@ from kivy.metrics import Metrics
 #SFX_DIE = SoundLoader.load("audio/die.wav")
 
 BACKGROUND_IMAGE = "images/background.png"
+#BIRD_IMAGE = "images/bird.png"
 BIRD_WINGUP_IMAGE = "atlas://images/bird_anim/wing-up"
 BIRD_WINGMID_IMAGE = "atlas://images/bird_anim/wing-mid"
 BIRD_WINGDOWN_IMAGE = "atlas://images/bird_anim/wing-down"
@@ -166,7 +167,7 @@ class Game(Widget):
     def update(self, dt):
         if self.game_over:
             return
-        print("delta time")
+        #print("delta time")
         self.background.update()
         self.bird.update()
         self.ground.update()
@@ -216,13 +217,14 @@ class GameApp(App):
     def build(self):
         #game = Game() #For Testin
         #Window.size = game.size #For Testing
-        #return game #For Testing
 
-        #Window.size = (288, 384) #For Testing
+
+        Window.size = (288, 384) #For Testing
 
         params.init()
         top = Widget()
         top.add_widget(Menu())
+        #return game #For Testing
         return top
 
 class params(object):

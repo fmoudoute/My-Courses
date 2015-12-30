@@ -4,7 +4,8 @@ Sending and Recieving Data with Sockets
 """
 import socket
 import sys
-from _thread import *
+from thread import * #Python 2.7
+#from _thread import * #Python 3.2
 
 host = ""
 port = 7777
@@ -20,16 +21,21 @@ headjack.listen(1)
 print("Waiting for a connection...")
 
 def threaded_client(connection):
-    connection.send(str.encode("Type here:\n")) #Python 2 does not need encode
+    connection.send(str("Type here:\n")) #Python 2.7
+    #connection.send(str.encode("Type here:\n")) #Python 3.2
 
     while True:
         data = connection.recv(1024) #originally 2048
-        print("Received ", repr(data.decode("utf-8"))) #print data
-        #reply = "Server output: " + data.decode("utf-8") #original test
-        reply = input("Reply :") #raw_input() in python 2.7
+        print("Received ", repr(data)) #Python 2.7
+        #print("Received ", repr(data.decode("utf-8"))) #Python 3.2
+        ###reply = "Server output: " + data.decode("utf-8") #original test
+        reply = raw_input("Reply :") #Python 2.7
+        #reply = input("Reply :") #Python 3.2
         if not data:
             break
-        connection.sendall(str.encode(reply))
+        connection.sendall(str(reply)) #Python 2.7
+        #connection.sendall(str.encode(reply)) #Python 3.2
+
     connection.close()
 
 while True:
