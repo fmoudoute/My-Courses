@@ -1,7 +1,3 @@
-# My-Courses
-<<<<<<< HEAD
-###
-=======
+### My-Courses
 
-###Read me
->>>>>>> 62bd84f1b9e9b2b8696fac06433fece20ce4214b
+This file contains the contents of various courses that I've taken.
