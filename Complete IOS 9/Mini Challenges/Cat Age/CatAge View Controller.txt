@@ -1,0 +1,38 @@
+//
+//  ViewController.swift
+//  Cat Age
+//
+//  Created by Tingbo Chen on 12/30/15.
+//  Copyright © 2015 Tingbo Chen. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    @IBOutlet var catAgeTextField: UITextField!
+    
+    @IBOutlet var resultsLabel: UILabel!
+    
+    @IBAction func findAge(sender: AnyObject) {
+        
+        var catAgeConvert = Int(catAgeTextField.text!)!
+            //"!" is to unwrap
+        
+        catAgeConvert = catAgeConvert * 7
+        
+        resultsLabel.text = "Your cat is: \(catAgeConvert) in cat years"
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
