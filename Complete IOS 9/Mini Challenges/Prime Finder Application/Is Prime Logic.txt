@@ -1,0 +1,34 @@
+/*
+Prime Finder Application Logic
+
+*/
+
+import UIKit
+
+var userInput = 257
+
+let userNum = Double(userInput)
+var primeChk = [Bool]()
+
+if userNum <= 0 {
+    print("must provide an integer > 0")
+} else if userNum % 2 == 0 && userNum == 2 {
+    primeChk.append(false)
+    print("Is Prime!")
+} else if userNum % 2 == 0 && userNum != 2 {
+    print("Not Prime")
+} else if userNum % 2 == 1 {
+    for var i = 3; i <= Int(sqrt(userNum)) + 1; i += 2 {
+        //print(i)
+        if Int(userNum) % i == 0{
+            primeChk.append(false)
+        }
+    }
+    if primeChk.count >= 1 {
+        print("Not Prime")
+    } else {
+        print("Is Prime")
+    }
+} else {
+    print("must provide an integer > 0")
+}
