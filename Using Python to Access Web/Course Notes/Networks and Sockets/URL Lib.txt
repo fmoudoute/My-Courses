@@ -2,10 +2,10 @@
 URL Lib
 
 """
-import urllib.request
-#python 2.7: import urllib
-headjack = urllib.request.urlopen("http://www.py4inf.com/code/romeo.txt")
-#python 2.7: urllib.urlopen()
+import urllib.request #python 3.5
+#import urllib #python 2.7
+headjack = urllib.request.urlopen("http://www.py4inf.com/code/romeo.txt") #python 3.5
+#headjack = urllib.urlopen("http://www.py4inf.com/code/romeo.txt") #python 2.7
 
 for line in headjack:
     print(line.strip())
