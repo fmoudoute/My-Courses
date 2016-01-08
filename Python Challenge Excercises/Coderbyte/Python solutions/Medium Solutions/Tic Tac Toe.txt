@@ -1,0 +1,64 @@
+"""
+Program check for the current condition of the
+classic Tic Tac Toe Game.
+"""
+
+def check_game(board):
+    
+    #Possible Conditions:
+    possibleConditions = [
+        # horizontal
+        ((0,0), (1,0), (2,0)),
+        ((0,1), (1,1), (2,1)),
+        ((0,2), (1,2), (2,2)),
+        # vertical
+        ((0,0), (0,1), (0,2)),
+        ((1,0), (1,1), (1,2)),
+        ((2,0), (2,1), (2,2)),
+        # diagonals
+        ((0,0), (1,1), (2,2)),
+        ((2,0), (1,1), (0,2))
+    ]
+    
+    currentCondition = [[],[],[],[],[],[],[],[]]
+    loopCount = -1
+    slotNum = -1
+    blanks = 0
+    
+    #Find Combinations:
+    for combinations in possibleConditions:
+        for (x,y) in combinations:
+            loopCount += 1
+            if (loopCount)%3 == 0:
+                slotNum += 1
+            if board[y][x] == "":
+                blanks += 1
+            currentCondition[slotNum].append(board[y][x])
+    #print(currentCondition) #for testing
+    
+    #Testing Victory Condition:
+    victory_ls = []
+    finalCondition = None
+    
+    for i in currentCondition:
+        if len(set(i)) == 1 and set(i) != {""}:
+                victory_ls.append(i)
+    #print(victory_ls) #for testing
+    
+    if len(victory_ls) == 0 and blanks == 0:
+        finalCondition = "tie"
+    elif len(victory_ls) != 0:
+        finalCondition = victory_ls[0][0] + "\'s win"
+    else:
+        finalCondition = "game not concluded"
+    
+    return finalCondition
+    
+board = [
+    ["X", "O", "O"],
+    ["X", "X", "X"],
+    ["O", "", "O"],
+]
+
+print(check_game(board)) #X's win
+
