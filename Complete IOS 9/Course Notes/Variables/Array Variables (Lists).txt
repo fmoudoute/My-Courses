@@ -18,6 +18,7 @@ print(num_ls)
 
 num_ls.sort()
 
+var empty_list: [AnyObject] = []
 
 // Quick Challenge: Create an array of three different numbers and then remove the middle one and add an item to the end of the array which is the two remaining numbers multiplied together
 var num_ls2 = [21,42,54]

@@ -1,0 +1,41 @@
+/*
+Regular Expressions regex or regexp
+
+^ 	Matches the BEGINNING of a line
+$ 	Matches the END of the line
+. 	Matches ANY character
+\s 	Matches WHITESPACE
+\S 	Matches any NON-WHITESPACE character
+* 	REPEATS a character ZERO or more times
+*? 	REPEATS a character ZERO or more times (non-greedy)
++ 	REPEATS a character ONE or more times
++? 	REPEATS a character ONE or more times (non-greedy)
+[aeiou]	Matches a single character in the list SET
+[^XYZ] 	Matches a single character NOT IN the listed SET
+[a-z0-9] The set of characters can include a RANGE
+(	Indicates where string EXTRACTION is to start
+)	Indicates where string EXTRACTION is to end
+
+Extract words to a list:
+*/
+
+import UIKit
+
+var newString = "testing regex in Swift"
+
+func regexMatch(regex: String!, text: String!) -> [String] {
+    
+    do {
+        let regex = try NSRegularExpression(pattern: regex, options: [])
+        let nsString = text as NSString
+        let results = regex.matchesInString(text,
+            options: [], range: NSMakeRange(0, nsString.length))
+        return results.map { nsString.substringWithRange($0.range)}
+    } catch let error as NSError {
+        print("invalid regex: \(error.localizedDescription)")
+        return []
+    }
+}
+
+let matches = regexMatch("[a-zA-Z]+", text: newString)
+print(matches)

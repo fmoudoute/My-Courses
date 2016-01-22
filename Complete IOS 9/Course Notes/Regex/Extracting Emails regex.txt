@@ -1,0 +1,25 @@
+"""
+Extracting Emails
+() - indicate the start and end of what to extract.
+[^ ] - Not blank
+
+"""
+import re
+
+#Finding an email
+sentence = "From stephen.marquard@uct.ac.za Sat Jan 5 09:14:16: 2008"
+
+y = re.findall("\S+@\S+", sentence)
+print(y)
+
+#Find an email, but only find if it starts with "From "
+y = re.findall("^From (\S+@\S+)", sentence)
+print(y)
+
+#Extract the domain
+y = re.findall("@([^ ]*)", sentence)
+print(y)
+
+#Extract the domain, but only find if it starts with "From "
+y= re.findall("^From .*@([^ ]*)", sentence)
+print(y)

@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var inputField: UITextField!
     
-    @IBAction func submitButton(sender: AnyObject) {
+    @IBAction func submitButton(sender: AnyObject?) {
         outputLabel.text = inputField.text
         
     }
@@ -40,9 +40,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //Tapping "Return" will close the keyboard:
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         
-        outputLabel.text = inputField.text
-        
         textField.resignFirstResponder()
+        
+        self.submitButton(nil)
         
         return true
     }

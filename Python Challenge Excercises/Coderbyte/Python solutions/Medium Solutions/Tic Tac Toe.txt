@@ -1,6 +1,6 @@
 """
 Program check for the current condition of the
-classic Tic Tac Toe Game.
+classic Tic Tac Toe Game and returns the result of the game.
 """
 
 def check_game(board):
@@ -47,7 +47,7 @@ def check_game(board):
     
     if len(victory_ls) == 0 and blanks == 0:
         finalCondition = "tie"
-    elif len(victory_ls) != 0:
+    elif len(victory_ls) >= 1:
         finalCondition = victory_ls[0][0] + "\'s win"
     else:
         finalCondition = "game not concluded"

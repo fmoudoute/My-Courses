@@ -1,22 +1,21 @@
 Git Commands
 
-Config:
+Configuring Git:
 git config --global user.name "D-Cipher"
 git config --global user.email d.cipher.x@gmail.com
 
-Vewing Directories:
-pwd - Print working directory
+Navigating and Vewing Directories:
+cd /Users/tingbochen/Documents/ - MAC navigates to directory
+cd C:/Users/wcai/Desktop/"5 Personal Projects”/ - PC navigates to directory
+cd .. - Go back a directory
 ls - lists directories in current directory
+pwd - Print working directory
 
-Navigating and altering directories:
-cd - navigates directory
-cd C:/Users/wcai/Desktop/"5 Personal Projects"/Submissions - Navigates directory
-mkdir DATA - Makes directory called "DATA"
-rm - removes directory
-
-Moving Directories:
+Altering Directories:
 touch DATA - picks up directory "DATA"
 mv Data Documents - Moves it to "Documents"
+mkdir DATA - Makes directory called "DATA"
+rm - removes directorys
 
 Link Git Hub to local Git repo:
 git init - innitializes empty git repo in current directory
@@ -35,12 +34,4 @@ Updates Local repo:
 git status - displays untracked files
 git add . - adds all new files
 git add -u - udates changes
-git add -a -does both of the above
 git commit -m "Message" -commits your changes
-
-Markdown Syntax in .txt file
-## This is a secondary heading
-### This is a teriary heading
-*This is a list
-
-

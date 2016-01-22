@@ -1,0 +1,52 @@
+"""
+Searching and Matching regex
+
+re.search() - see if a string matches regular expression.
+re.findall() - extracts portions of a string that match your regular expression
+^ - matches the beginning of a line
+. - matches any character
+* - any number of times
+\S - match any non-whitespace character
++ - one or more times
+
+"""
+
+import re
+
+#Finds the expression "From:" and returns a true or false, counts number of "From:"
+hand = open("mbox-short.txt")
+count_ls = []
+for line in hand:
+    line = line.rstrip()
+    if re.search("From:", line):
+        count_ls.append(line)
+print(len(count_ls))
+
+#Look for lines that only start with "From:"
+hand2 = open("mbox-short.txt")
+count_ls = []
+for line in hand2:
+    line = line.rstrip()
+    if re.search("^From:", line):
+        count_ls.append(line)
+print(len(count_ls))
+
+#Match the start of the line that starts with "X" and ends with ":"
+#Example: X-Sieve:, X-DSPAM-Result:
+hand3 = open("mbox-short.txt")
+count_ls = []
+for line in hand3:
+    line = line.rstrip()
+    if re.search("^X.*:", line):
+        count_ls.append(line)
+print(len(count_ls))
+
+#Match the start of the line that starts with "X-" and ends with ":" BUT Not Allow Spaces
+hand4 = open("mbox-short.txt")
+count_ls = []
+for line in hand4:
+    line = line.rstrip()
+    if re.search("^X-\S+:", line):
+        count_ls.append(line)
+print(len(count_ls))
+
