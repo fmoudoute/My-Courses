@@ -1,4 +1,4 @@
-Git Commands
+﻿Git Commands
 
 Configuring Git:
 git config --global user.name "D-Cipher"
@@ -6,7 +6,7 @@ git config --global user.email d.cipher.x@gmail.com
 
 Navigating and Vewing Directories:
 cd /Users/tingbochen/Documents/ - MAC navigates to directory
-cd C:/Users/wcai/Desktop/"5 Personal Projects”/ - PC navigates to directory
+cd C:/Users/wcai/Desktop/"5 Personal Projects"/ - PC navigates to directory
 cd .. - Go back a directory
 ls - lists directories in current directory
 pwd - Print working directory
