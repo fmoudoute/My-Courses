@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Note: html-color-codes.info-->
+    <style type="text/css">
+        .bluebox {
+            background-color: blue;
+            width: 200px;
+            height: 200px;
+            margin: 50px 100px 30px 10px;
+            padding: 10px;
+        }
+        .greenbox {
+            background-color: #55C226;
+            width: 300px;
+            height: 200px;
+            postion: static;
+            margin-left: 50px;
+            padding: 10px;
+        }
+
+        p {
+            padding: 0px;
+            margin: 0px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="bluebox">
+    <p>This is some text.</p>
+</div>
+
+<div class="greenbox">
+    <p>This is some more text.</p>
+</div>
+
+<p>Additional content text here blah blah blah</p>
+
+</body>
+</html>

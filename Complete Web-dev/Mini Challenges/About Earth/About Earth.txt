@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+    <a name="top" />
+    <h1>Hello World!</h1>
+    <h3>A few facts about the world we live in</h3>
+    <iframe align="right" width="448" height="252" src="https://www.youtube.com/embed/W4PM9ZEP19A"
+            frameborder="1" allowfullscreen></iframe>
+    <p><img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg"
+            height="300" width="300"/></p>
+
+    <p>Earth is the third planet from the Sun, the densest planet in the Solar System,
+        the largest of the Solar System's four terrestrial planets, and the only astronomical
+        object known to harbor life.</p>
+    <p>Within its first billion years, life appeared in Earth's oceans and began to affect its
+        atmosphere and surface, promoting the proliferation of aerobic as well as anaerobic
+        organisms. Since then, the combination of Earth's distance from the Sun, its physical
+        properties and its geological history have allowed life to thrive and evolve. The
+        earliest undisputed life on Earth arose at least 3.5 billion years ago. Earlier
+        physical evidence of life includes graphite, a biogenic substance, in 3.7
+        billion-year-old metasedimentary rocks discovered in southwestern Greenland, as well
+        as, "remains of biotic life" found in 4.1 billion-year-old rocks in Western Australia.
+        Earth's biodiversity has expanded continually except when interrupted by mass
+        extinctions. Although scholars estimate that over 99% of all species of life
+        (over five billion) that ever lived on Earth are extinct, there are still an estimated
+        10–14 million extant species, of which about 1.2 million have been documented and over
+        86% have not yet been described. Over 7.3 billion humans live on Earth and depend on its
+        biosphere and minerals for their survival. Earth's human population is divided among
+        about two hundred sovereign states which interact through diplomacy, conflict, travel,
+        trade and communication media.</p>
+    <p><a href="#top">Back to top</a></p>
+    <hr />
+    <h3>About the Earth</h3>
+    <ul>
+        <li><strong>Mass:</strong> 5.97237×10<sup>24</sup> kg (1.31668×1025 lb)</li>
+        <li><strong>Circumference:</strong> 40,075.017 km</li>
+        <li><strong>Satellites:</strong> The Moon</li>
+        <li><strong>Equatorial radius:</strong> 6,378.1 km (3,963.2 mi)</li>
+        <li><strong>Axial tilt:</strong>23.4392811°</li>
+    </ul>
+    <hr />
+    <h3>Top 3 Interesting Earth Facts</h3>
+    <ol>
+        <li>The Earth's rotation is gradually slowing.</li>
+        <li>A year isn't exactly 365 days, and the earth doesn't take 24 hours to rotate</li>
+        <li>70% of the Earth's surface is water</li>
+        <li>Only one third of its fresh water is unfrozen</li>
+    </ol>
+    <hr />
+    <h3>Earth's nearest neighbors</h3>
+    <table>
+        <tr><th>Names</th><th>Radius</th><th>Temp</th></tr>
+        <tr><td>Mars</td><td>3,390km</td><td>-55°C</td></tr>
+        <tr><td>Venus</td><td>6,052</td><td>460°C</td></tr>
+    </table>
+    <hr />
+    <p>Want to know more?</p>
+    <form target="http://space-facts.com/earth/?">
+        <input type="submit" value="Click here"/>
+    </form>
+    <p><a href="#top">Back to top</a></p>
+</div>
+</body>
+</html>

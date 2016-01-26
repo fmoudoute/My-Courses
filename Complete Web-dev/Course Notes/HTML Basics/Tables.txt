@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+
+    <table>
+        <tr><th>Names</th><th>Age</th><th>Gender</th></tr>
+        <tr><td>Rob</td><td>33</td><td>Male</td></tr>
+        <tr><td>Kirsten</td><td>34</td><td>Female</td></tr>
+        <tr><td>Tom</td><td>3</td><td>Male</td></tr>
+
+    </table>
+
+</div>
+</body>
+</html>

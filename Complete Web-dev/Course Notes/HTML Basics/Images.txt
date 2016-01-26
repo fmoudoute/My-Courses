@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+    <!-- Uploaded image-->
+    <img src="images/NikkiPaulo.jpg" />
+    <!-- Image from web-->
+    <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:
+    ANd9GcT2xENKdUkGHA2Upj3a8yk5oC3hY96X9_tbLI1xL97KU42bybZo" height="300" width="200"/>
+</div>
+</body>
+</html>

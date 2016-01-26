@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Note: html-color-codes.info-->
+    <style type="text/css">
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .bold {
+            font-weight: bold;
+            color: green;
+            font-size: 200%;
+        }
+        .italic {
+            font-style: italic;
+            font-size: 20px;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .greenbox {
+            width: 300px;
+            height: 50px;
+            background-color: green;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="greenbox">
+    <p>This is some text, This is some text, This is some text,
+    This is some text
+    </p>
+</div>
+
+<p class="bold">This is some bold text</p>
+
+<p class="italic">This is some italic <span class="underline">text</span></p>
+
+</body>
+</html>

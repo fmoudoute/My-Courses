@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--Note: html-color-codes.info-->
+    <style type="text/css">
+        .redbox {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            float: left;
+            margin-left: 10px;
+            border: 5px black solid;
+        }
+        .bluebox {
+            background-color: blue;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            float: left;
+            margin-left: 10px;
+            border-style: ridge solid dotted dashed;
+            border-width: 10px 5px 3px 1px;
+            border-color: green yellow blue black;
+        }
+        .greenbox {
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            padding: 10px;
+            float: left;
+            margin-left: 10px;
+            border-radius: 10px;
+        }
+        p {
+            padding: 0px;
+            margin: 0px;
+        }
+        .clearingdiv {
+            clear: both;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="redbox">
+    <p>This is some text.</p>
+</div>
+
+<div class="bluebox">
+    <p>This is some more text.</p>
+</div>
+
+<div class="greenbox">
+    <p>This is some more text too.</p>
+</div>
+
+<div class="clearingdiv"></div>
+<p>Additional content text here blah blah blah</p>
+
+</body>
+</html>

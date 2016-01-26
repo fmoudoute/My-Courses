@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+
+    <h4>This is an unordered list of <br />
+    My favorite foods:</h4>
+    <ul>
+        <li>Pizza</li>
+        <li>Chocolate</li>
+        <li>Curry</li>
+    </ul>
+
+    <h4>This is an ordered list of <br />
+    My favorite times of day:</h4>
+    <ol>
+        <li>Morning</li>
+        <li>Bed Time</li>
+        <li>Dinner</li>
+    </ol>
+
+</div>
+</body>
+</html>

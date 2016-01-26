@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+    <form>
+        <!--Text Box-->
+        <input type="text" placeholder="type here" name="name"/>
+        <input type="email" placeholder="you@example.com" name="email"/>
+        <br /><br /><br />
+
+        <!--Text Area-->
+        <textarea name="textcontent">My content goes here</textarea>
+        <br /><br /><br />
+
+        <!--Dropdown box-->
+        <select>
+            <option>Select an option...</option>
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+        </select>
+        <br /><br /><br />
+
+        <!--Radio buttons-->
+        <input type="radio" name="color"/> Red
+        <input type="radio" name="color"/> Green
+        <br /><br /><br />
+
+        <!--Check box-->
+        <input type="checkbox"/> Dog
+        <input type="checkbox"/> Fish
+        <input type="checkbox"/> Cat
+        <br /><br /><br />
+
+        <!--Submit button-->
+        <input type="submit" value="Submit Button"/>
+
+    </form>
+</div>
+</body>
+</html>

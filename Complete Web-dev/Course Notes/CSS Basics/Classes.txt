@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!--Note: html-color-codes.info-->
+    <style type="text/css">
+        p {
+            color: blue;
+        }
+
+        .large {
+            font-size: 300%;
+        }
+
+        #green {
+            color: green;
+        }
+
+        .underline {
+            text-decoration: underline;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+
+<body>
+<div>
+    <!--Classes-->
+    <p class="large">This is some text.</p>
+
+    <!--IDs Note: can only have one id of that name-->
+    <p id="green">This is some text too.</p>
+
+    <!--Span-->
+    <p>The third <span class="underline large bold">word</span> in this p is underlined</p>
+
+</div>
+</body>
+</html>

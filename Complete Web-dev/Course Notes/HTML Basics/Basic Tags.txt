@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+    <h1>This is a huge header</h1>
+    <h2>This is a smaller header</h2>
+    <h3>This is h3</h3>
+    <h4>This is h4</h4>
+    <h5>This is h5</h5>
+
+    <p>My first line goes here.<br />Extra line</p>
+    <hr />
+    <p>This is a second line</p>
+
+    <p><strong>this is bold</strong> <em>this is italics</em></p>
+    <p><u>this is underline</u> <del>this is striked</del></p>
+</div>
+</body>
+</html>

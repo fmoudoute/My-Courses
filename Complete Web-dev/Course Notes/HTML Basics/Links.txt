@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <title>My First Webpage</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />    
+</head>
+
+<body>
+<div>
+
+    <a name="top" />
+
+    <!--External webpage link-->
+    <p><a href="http://www.google.com">Google</a></p>
+
+    <!--Internal webpage link-->
+    <p><a href="helloworld.html">Hello World</a></p>
+
+    <!--Link within page-->
+    <p><a href="#top">Back to top</a></p>
+
+    <!--iframe page-->
+    <p><iframe align="right" height="335" width="550" src="helloworld.html" frameborder="0"></iframe></p>
+
+</div>
+</body>
+</html>
