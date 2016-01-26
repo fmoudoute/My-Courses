@@ -13,23 +13,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Saving an object
+        //Saving an object:
         NSUserDefaults.standardUserDefaults().setObject("Rob", forKey: "name")
-        
         let userName = NSUserDefaults().objectForKey("name")! as! String // Convert back to String
-        
         print(userName)
         
-        //Saving an Array
+        //Saving an Array:
         
         let num_ls = [1,2,3,4]
+        let savedArray: [AnyObject] = []	
         
-        NSUserDefaults.standardUserDefaults().setObject(num_ls, forKey: "savedArray")
+        if NSUserDefaults().objectForKey("savedArray") != nil {
+            self.savedArray = NSUserDefaults().objectForKey("savedArray")! as! NSArray as [AnyObject] //Converting back to Array
+        }
         
-        let returnedArray = NSUserDefaults().objectForKey("savedArray")! as! NSArray //Converting back to Array
+        self.savedArray.append(num_ls) //Adding to savedArray
+        //self.savedArray = [] //for clearing saved object
         
-        for x in returnedArray {
-            print(x)
+        NSUserDefaults.standardUserDefaults().setObject(self.savedArray, forKey: "savedArray") //Saving new savedArray
+        
+        print(self.savedArray)
         }
         
     }

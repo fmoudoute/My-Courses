@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  Advanced Segues
+//  Test
 //
 //  Created by Tingbo Chen on 1/25/16.
 //  Copyright © 2016 Tingbo Chen. All rights reserved.

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Advanced Segues.xcscheme</key>
+		<key>Test.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>345CE8991C570401002E74B5</key>
+		<key>34B015E71C570CA500CBB541</key>
 		<dict>
 			<key>primary</key>
 			<true/>
