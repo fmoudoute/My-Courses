@@ -1,0 +1,41 @@
+"""
+Extracting patterns
+Extracts all words with one or more letters repeated.
+"""
+
+import re
+
+message = "parort folila notme carrot matia blah rtetoo melone"
+wordsplit = re.findall("\w+", message)
+#print(wordsplit) #for testing
+loop_count = len(wordsplit)
+
+matches = []
+    
+while loop_count > 0:
+        
+    try:
+        #Extract the pattern
+        patternRe = re.compile(r"(.)\S*\1")
+        extract_pat = patternRe.search(message).group()
+        #print(extract_pat) #for testing
+            
+        #Extract the word with pattern
+        Re_obj = "\S*"+extract_pat+"\S*"
+        extract_word = re.search(Re_obj, message).group()
+        #print(extract_word) #for testing
+    except:
+        extract_word = " "
+    
+    #False positive test
+    space_extract = re.findall("\s", extract_word)
+    if len(space_extract) == 0:
+        matches.append(extract_word)
+    else:
+        pass
+    
+    wordsplit.pop(0)
+    message = " ".join(wordsplit)
+    loop_count += -1
+
+print(matches)

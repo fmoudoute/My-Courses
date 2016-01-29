@@ -1,4 +1,0 @@
-“””
-Create a program in which the computer picks a random number between 1 an 5.
-The user then guesses a number and the computer tells the user whether he was right or wrong and gives the correct answer.
-“””

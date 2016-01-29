@@ -1,0 +1,26 @@
+Regular Expressions regex or regexp
+
+^ 	Matches the BEGINNING of a line
+$ 	Matches the END of the line
+. 	Matches ANY character
+\s 	Matches WHITESPACE
+\S 	Matches any NON-WHITESPACE character
+* 	REPEATS a character ZERO or more times
+*? 	REPEATS a character ZERO or more times (non-greedy)
++ 	REPEATS a character ONE or more times
++? 	REPEATS a character ONE or more times (non-greedy)
+[aeiou]	Matches a single character in the list SET
+[^XYZ] 	Matches a single character NOT IN the listed SET
+[a-z0-9] The set of characters can include a RANGE
+(	Indicates where string EXTRACTION is to start
+)	Indicates where string EXTRACTION is to end
+
+Basic Extraction:
+extract = re.findall("[a-zA-Z]+", string)
+
+Complex Extraction:
+message = "parort folila carrot matia rtetoo melone"
+patternRe = re.compile(r"(.)\S*\1")
+extract_pat = patternRe.search(message).group()
+Re_obj = “\S*”+extract_pat+”\S*”
+extract_word = re.search(Re_obj, message).group()

@@ -1,0 +1,33 @@
+'''
+Regex Basics
+'''
+import re
+
+message = "Call me 415-555-1011 tomorrow, or at 415-555-9999"
+
+#Check if string is a phone number
+phoneNumRegex = re.compile(r"\d\d\d-\d\d\d-\d\d\d\d")
+extract = phoneNumRegex.findall(message)
+print(extract)
+
+#=====Grouping
+
+extract = re.findall("(\d\d\d)-(\d\d\d-\d\d\d\d)",message)
+
+print(extract) #[(‘415', '555-4242'), ('415', '555-9999')]
+
+#=====Piping
+string = "Batmobile lost a Batwheel"
+extract = re.findall("Bat(man|mobile|wheel)", string)
+print(extract)
+
+extract = re.findall("Bat(\S+)", string)
+print(extract)
+
+
+#=====Appear 0 or 1 times
+string = "The Adventures of Batman"
+batRegex = re.compile(r"Bat(wo)?man")
+#extract = batRegex.search(string)
+extract = re.findall("(Bat(wo)?man)", string)
+print(extract)
