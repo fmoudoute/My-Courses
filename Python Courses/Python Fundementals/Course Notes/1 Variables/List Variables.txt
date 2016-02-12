@@ -10,6 +10,9 @@ num_ls[2]
 #Length of a list
 len(num_ls)
 
+#Indexing item
+num_ls.index(23)
+
 #Pop an item base on location
 num_ls.pop(3)
 print(num_ls)
@@ -24,6 +27,10 @@ print(num_ls)
 
 #Sort a list
 num_ls.sort()
+print(num_ls)
+
+#Reverse Sort
+num_ls.sort(reverse=True)
 print(num_ls)
 
 """

@@ -40,7 +40,7 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        rowCounter = indexPath.row
+        let rowCounter = indexPath.row
         
         print(rowCounter)
         

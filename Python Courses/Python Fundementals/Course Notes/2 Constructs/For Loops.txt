@@ -23,6 +23,18 @@ for i in range(len(num_ls)):
     
 print(num_ls)
 
+
+#Another example:
+
+shopping_ls = ["kife", "cantine", "striker", "sleeping bag", "shotgun"]
+
+supplies = []
+
+for i in range(len(shopping_ls)):
+    supplies.append(shopping_ls[i])
+
+print(supplies)
+
 """
 //Quick Challenge: Create an array take the array and 
 half all of the values.

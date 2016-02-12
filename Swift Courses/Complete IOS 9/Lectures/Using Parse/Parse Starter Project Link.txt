@@ -1,0 +1,3 @@
+Parse Starter Project for Xcode 7 and swift 2:
+
+http://www.robpercival.co.uk/parse-working-on-xcode-7swift-2/

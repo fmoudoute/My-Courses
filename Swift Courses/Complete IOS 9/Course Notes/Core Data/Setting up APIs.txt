@@ -1,0 +1,13 @@
+Setting up API for Blog Reader
+
+1) Set up developer console
+- Go to "https://console.developers.google.com" > "Enable APIs and get credentials like keys"
+- if blogger API is not enabled then search for blogger and enable API.
+- go to credentials and enable browser credentials.
+- find "Key": AIzaSyCFcoJaqmx6LhZu0TsNFvo3Q6uSDoVodVY
+
+2) To retrieve data
+- Access by website ID: https://www.googleapis.com/blogger/v3/blogs/2399953?key=[YOUR-API-KEY]
+- Access by website URL: https://www.googleapis.com/blogger/v3/blogs/byurl?url=https://googleblog.blogspot.com&key=[YOUR-API-KEY]
+- Access specific blog post: https://www.googleapis.com/blogger/v3/blogs/10861780/posts?key=[YOUR-API-KEY]
+
