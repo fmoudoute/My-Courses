@@ -1,0 +1,309 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		347319FE1C724CCC00171F91 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347319FD1C724CCC00171F91 /* AppDelegate.swift */; };
+		34731A001C724CCC00171F91 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347319FF1C724CCC00171F91 /* ViewController.swift */; };
+		34731A031C724CCC00171F91 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34731A011C724CCC00171F91 /* Main.storyboard */; };
+		34731A061C724CCC00171F91 /* Drag_Effect.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 34731A041C724CCC00171F91 /* Drag_Effect.xcdatamodeld */; };
+		34731A081C724CCC00171F91 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34731A071C724CCC00171F91 /* Assets.xcassets */; };
+		34731A0B1C724CCC00171F91 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34731A091C724CCC00171F91 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		347319FA1C724CCC00171F91 /* Drag Effect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drag Effect.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		347319FD1C724CCC00171F91 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		347319FF1C724CCC00171F91 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		34731A021C724CCC00171F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		34731A051C724CCC00171F91 /* Drag_Effect.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Drag_Effect.xcdatamodel; sourceTree = "<group>"; };
+		34731A071C724CCC00171F91 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34731A0A1C724CCC00171F91 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		34731A0C1C724CCC00171F91 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		347319F71C724CCC00171F91 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		347319F11C724CCC00171F91 = {
+			isa = PBXGroup;
+			children = (
+				347319FC1C724CCC00171F91 /* Drag Effect */,
+				347319FB1C724CCC00171F91 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		347319FB1C724CCC00171F91 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				347319FA1C724CCC00171F91 /* Drag Effect.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		347319FC1C724CCC00171F91 /* Drag Effect */ = {
+			isa = PBXGroup;
+			children = (
+				347319FD1C724CCC00171F91 /* AppDelegate.swift */,
+				347319FF1C724CCC00171F91 /* ViewController.swift */,
+				34731A011C724CCC00171F91 /* Main.storyboard */,
+				34731A071C724CCC00171F91 /* Assets.xcassets */,
+				34731A091C724CCC00171F91 /* LaunchScreen.storyboard */,
+				34731A0C1C724CCC00171F91 /* Info.plist */,
+				34731A041C724CCC00171F91 /* Drag_Effect.xcdatamodeld */,
+			);
+			path = "Drag Effect";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		347319F91C724CCC00171F91 /* Drag Effect */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34731A0F1C724CCC00171F91 /* Build configuration list for PBXNativeTarget "Drag Effect" */;
+			buildPhases = (
+				347319F61C724CCC00171F91 /* Sources */,
+				347319F71C724CCC00171F91 /* Frameworks */,
+				347319F81C724CCC00171F91 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Drag Effect";
+			productName = "Drag Effect";
+			productReference = 347319FA1C724CCC00171F91 /* Drag Effect.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		347319F21C724CCC00171F91 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Tingbo Chen";
+				TargetAttributes = {
+					347319F91C724CCC00171F91 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = LJL8G936JS;
+					};
+				};
+			};
+			buildConfigurationList = 347319F51C724CCC00171F91 /* Build configuration list for PBXProject "Drag Effect" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 347319F11C724CCC00171F91;
+			productRefGroup = 347319FB1C724CCC00171F91 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				347319F91C724CCC00171F91 /* Drag Effect */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		347319F81C724CCC00171F91 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34731A0B1C724CCC00171F91 /* LaunchScreen.storyboard in Resources */,
+				34731A081C724CCC00171F91 /* Assets.xcassets in Resources */,
+				34731A031C724CCC00171F91 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		347319F61C724CCC00171F91 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34731A001C724CCC00171F91 /* ViewController.swift in Sources */,
+				347319FE1C724CCC00171F91 /* AppDelegate.swift in Sources */,
+				34731A061C724CCC00171F91 /* Drag_Effect.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		34731A011C724CCC00171F91 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34731A021C724CCC00171F91 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		34731A091C724CCC00171F91 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34731A0A1C724CCC00171F91 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		34731A0D1C724CCC00171F91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		34731A0E1C724CCC00171F91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		34731A101C724CCC00171F91 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Drag Effect/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tbc.Drag-Effect";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		34731A111C724CCC00171F91 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Drag Effect/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tbc.Drag-Effect";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		347319F51C724CCC00171F91 /* Build configuration list for PBXProject "Drag Effect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34731A0D1C724CCC00171F91 /* Debug */,
+				34731A0E1C724CCC00171F91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34731A0F1C724CCC00171F91 /* Build configuration list for PBXNativeTarget "Drag Effect" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34731A101C724CCC00171F91 /* Debug */,
+				34731A111C724CCC00171F91 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		34731A041C724CCC00171F91 /* Drag_Effect.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				34731A051C724CCC00171F91 /* Drag_Effect.xcdatamodel */,
+			);
+			currentVersion = 34731A051C724CCC00171F91 /* Drag_Effect.xcdatamodel */;
+			path = Drag_Effect.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 347319F21C724CCC00171F91 /* Project object */;
+}

@@ -16,6 +16,17 @@ App Transport Security Settings {Type: Dictionary}
 2) Add under the App Transport Security Settings:
 Allow Arbitrary Loads {Type: Boolean} {Value: Yes}
 
+-OR-
+
+Add this code in the info.plist file:
+'''
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
+'''
+
 */
 
 import UIKit

@@ -1,0 +1,6 @@
+#Push Notification Guide
+
+##1) Set up Keychain Access
+-look up "Keychain Access" in your mac
+-Keychain Access>Certificate Assistant>Request a Certificate From a Certificate Authority
+-Put in Email and CA Email, save to disk

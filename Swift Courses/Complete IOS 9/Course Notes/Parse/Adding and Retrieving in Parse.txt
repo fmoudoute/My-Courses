@@ -1,0 +1,71 @@
+//
+//  ViewController.swift
+//
+//  Copyright 2011-present Parse Inc. All rights reserved.
+//
+
+import UIKit
+import Parse
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        /*
+        //Adding an Object to parse
+        var product = PFObject(className: "Products")
+        
+        product["name"] = "Ice Creme"
+        
+        product["description"] = "mint chocolate"
+        
+        product["price"] = 3.99
+        
+        product.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success == true {
+                print("successfully saved, ID: " + String(product.objectId!))
+            } else {
+                print(error)
+            }
+        }
+        */
+        
+        
+        //Retrieving an Object from parse and Updating
+        var query = PFQuery(className: "Products")
+        
+        query.getObjectInBackgroundWithId("Fc5TLfOEwB") { (object: PFObject?, error: NSError?) -> Void in
+            
+            if error != nil {
+                print(error)
+            } else if let product = object {
+                //print(object)
+                
+                //print(object!.objectForKey("description")!) //Retrieving the object
+                
+                //Updating the object
+                product["description"] = "Rocky Road"
+                product["price"] = 5.99
+                product.saveInBackground()
+                
+            }
+            
+        }
+        
+        
+        /*
+        let testObject = PFObject(className: "TestObject")
+        testObject["foo"] = "bar"
+        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
+            print("Object has been saved.")
+        }
+        */
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
