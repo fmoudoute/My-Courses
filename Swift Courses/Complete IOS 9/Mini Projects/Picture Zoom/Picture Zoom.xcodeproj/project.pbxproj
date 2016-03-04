@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		345289131C8781D000A6F44C /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345289121C8781D000A6F44C /* UploadController.swift */; };
+		349E7CB21C874F1900697D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CB11C874F1900697D89 /* AppDelegate.swift */; };
+		349E7CB41C874F1900697D89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CB31C874F1900697D89 /* ViewController.swift */; };
+		349E7CB71C874F1900697D89 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CB51C874F1900697D89 /* Main.storyboard */; };
+		349E7CBA1C874F1900697D89 /* Picture_Zoom.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CB81C874F1900697D89 /* Picture_Zoom.xcdatamodeld */; };
+		349E7CBC1C874F1900697D89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CBB1C874F1900697D89 /* Assets.xcassets */; };
+		349E7CBF1C874F1900697D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */; };
+		349E7CC71C8750CE00697D89 /* placeholder-camera-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */; };
+		349E7CC91C87533A00697D89 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CC81C87533A00697D89 /* TableViewController.swift */; };
+		34B9C24A1C88BCB9008CBCDA /* PanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9C2491C88BCB9008CBCDA /* PanViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		345289121C8781D000A6F44C /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
+		349E7CAE1C874F1900697D89 /* Picture Zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Picture Zoom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		349E7CB11C874F1900697D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		349E7CB31C874F1900697D89 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		349E7CB61C874F1900697D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		349E7CB91C874F1900697D89 /* Picture_Zoom.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Picture_Zoom.xcdatamodel; sourceTree = "<group>"; };
+		349E7CBB1C874F1900697D89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		349E7CBE1C874F1900697D89 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		349E7CC01C874F1900697D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-camera-green.png"; sourceTree = "<group>"; };
+		349E7CC81C87533A00697D89 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		34B9C2491C88BCB9008CBCDA /* PanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		349E7CAB1C874F1900697D89 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		349E7CA51C874F1900697D89 = {
+			isa = PBXGroup;
+			children = (
+				349E7CB01C874F1900697D89 /* Picture Zoom */,
+				349E7CAF1C874F1900697D89 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		349E7CAF1C874F1900697D89 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				349E7CAE1C874F1900697D89 /* Picture Zoom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		349E7CB01C874F1900697D89 /* Picture Zoom */ = {
+			isa = PBXGroup;
+			children = (
+				349E7CB11C874F1900697D89 /* AppDelegate.swift */,
+				349E7CB31C874F1900697D89 /* ViewController.swift */,
+				349E7CC81C87533A00697D89 /* TableViewController.swift */,
+				345289121C8781D000A6F44C /* UploadController.swift */,
+				34B9C2491C88BCB9008CBCDA /* PanViewController.swift */,
+				349E7CB51C874F1900697D89 /* Main.storyboard */,
+				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
+				349E7CBB1C874F1900697D89 /* Assets.xcassets */,
+				349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */,
+				349E7CC01C874F1900697D89 /* Info.plist */,
+				349E7CB81C874F1900697D89 /* Picture_Zoom.xcdatamodeld */,
+			);
+			path = "Picture Zoom";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		349E7CAD1C874F1900697D89 /* Picture Zoom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 349E7CC31C874F1900697D89 /* Build configuration list for PBXNativeTarget "Picture Zoom" */;
+			buildPhases = (
+				349E7CAA1C874F1900697D89 /* Sources */,
+				349E7CAB1C874F1900697D89 /* Frameworks */,
+				349E7CAC1C874F1900697D89 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Picture Zoom";
+			productName = "Picture Zoom";
+			productReference = 349E7CAE1C874F1900697D89 /* Picture Zoom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		349E7CA61C874F1900697D89 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Tingbo Chen";
+				TargetAttributes = {
+					349E7CAD1C874F1900697D89 = {
+						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = LJL8G936JS;
+					};
+				};
+			};
+			buildConfigurationList = 349E7CA91C874F1900697D89 /* Build configuration list for PBXProject "Picture Zoom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 349E7CA51C874F1900697D89;
+			productRefGroup = 349E7CAF1C874F1900697D89 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				349E7CAD1C874F1900697D89 /* Picture Zoom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		349E7CAC1C874F1900697D89 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349E7CBF1C874F1900697D89 /* LaunchScreen.storyboard in Resources */,
+				349E7CBC1C874F1900697D89 /* Assets.xcassets in Resources */,
+				349E7CC71C8750CE00697D89 /* placeholder-camera-green.png in Resources */,
+				349E7CB71C874F1900697D89 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		349E7CAA1C874F1900697D89 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				349E7CB41C874F1900697D89 /* ViewController.swift in Sources */,
+				345289131C8781D000A6F44C /* UploadController.swift in Sources */,
+				349E7CB21C874F1900697D89 /* AppDelegate.swift in Sources */,
+				349E7CBA1C874F1900697D89 /* Picture_Zoom.xcdatamodeld in Sources */,
+				34B9C24A1C88BCB9008CBCDA /* PanViewController.swift in Sources */,
+				349E7CC91C87533A00697D89 /* TableViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		349E7CB51C874F1900697D89 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				349E7CB61C874F1900697D89 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				349E7CBE1C874F1900697D89 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		349E7CC11C874F1900697D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		349E7CC21C874F1900697D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		349E7CC41C874F1900697D89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Picture Zoom/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tbc.Picture-Zoom";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		349E7CC51C874F1900697D89 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Picture Zoom/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.tbc.Picture-Zoom";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		349E7CA91C874F1900697D89 /* Build configuration list for PBXProject "Picture Zoom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				349E7CC11C874F1900697D89 /* Debug */,
+				349E7CC21C874F1900697D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		349E7CC31C874F1900697D89 /* Build configuration list for PBXNativeTarget "Picture Zoom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				349E7CC41C874F1900697D89 /* Debug */,
+				349E7CC51C874F1900697D89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		349E7CB81C874F1900697D89 /* Picture_Zoom.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				349E7CB91C874F1900697D89 /* Picture_Zoom.xcdatamodel */,
+			);
+			currentVersion = 349E7CB91C874F1900697D89 /* Picture_Zoom.xcdatamodel */;
+			path = Picture_Zoom.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 349E7CA61C874F1900697D89 /* Project object */;
+}
