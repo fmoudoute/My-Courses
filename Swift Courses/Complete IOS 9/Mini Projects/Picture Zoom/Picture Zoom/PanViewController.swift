@@ -13,7 +13,6 @@ To Do:
 
 -figure out double tap or pinch to segue to zoom screen
 
-
 */
 
 
@@ -21,9 +20,11 @@ import UIKit
 
 class PanViewController: UIViewController, UIScrollViewDelegate {
     
-    var scrollView: UIScrollView!
+    var pictureScroll: UIScrollView!
     
     var pageControl: UIPageControl!
+    
+    var secondaryScroll: UIScrollView!
 
     var userProfileImages = Dictionary<String,AnyObject>()
     
@@ -80,38 +81,75 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
         
         self.navBar_adjust = Float(self.navigationController!.navigationBar.frame.size.height) + Float(self.navigationController!.navigationBar.frame.size.height)/2.2
         
-        scrollView = UIScrollView(frame: CGRectMake(0,
-            CGFloat(self.navBar_adjust),
-            self.view.frame.size.width,
-            self.view.frame.size.width))
         
-        scrollView.bounds = scrollView.frame
+        //====Set up Picture Scroll View
         
-        scrollView.backgroundColor = UIColor.blackColor()
+        let picScr_x = CGFloat(0)
+        let picScr_y = CGFloat(self.navBar_adjust)
+        let picScr_w = self.view.frame.size.width
+        let picScr_h = self.view.frame.size.width
         
-        //Turn on paging:
-        scrollView.pagingEnabled = true
+        pictureScroll = UIScrollView(frame: CGRectMake(picScr_x, picScr_y,picScr_w,picScr_h))
+        
+        pictureScroll.bounds = pictureScroll.frame
+        
+        pictureScroll.backgroundColor = UIColor.blackColor()
+        
+        pictureScroll.pagingEnabled = true
 
-        view.addSubview(scrollView)
+        view.addSubview(pictureScroll)
+        pictureScroll.delegate = self //Set scroll view delegate to view delegate
         
+        //====Adds Page Control to subview
+        let pgCont_x = self.pictureScroll.frame.size.width * 0.25
+        let pgCont_y = self.pictureScroll.frame.size.height + self.pictureScroll.frame.size.height*0.09
+        let pgCont_w = self.pictureScroll.frame.size.width * 0.5
+        let pgCont_h = CGFloat(37)
         
-        //Adds Page Control to subview
-        self.pageControl = UIPageControl(frame: CGRectMake(
-            self.scrollView.frame.size.width * 0.25,
-            self.scrollView.frame.size.height + self.scrollView.frame.size.height*0.09,
-            self.scrollView.frame.size.width * 0.5,
-            37))
+        self.pageControl = UIPageControl(frame: CGRectMake(pgCont_x,pgCont_y,pgCont_w,pgCont_h))
         
+        /*
+        //Not working...
         let salmon_color = UIColor(red: 255.0, green: 102.0, blue: 102.0, alpha: 1.0)
         let spring_color = UIColor(red: 102.0, green: 255.0, blue: 204.0, alpha: 1.0)
         
         self.pageControl.tintColor = UIColor.blackColor()
         self.pageControl.currentPageIndicatorTintColor = salmon_color
+        */
         
         view.addSubview(pageControl)
         
-        //Set scroll view delegate to view delegate
-        scrollView.delegate = self
+        //====Adds Secondary Scroll view
+        let secScr_x = CGFloat(0)
+        let secScr_y = CGFloat(self.navBar_adjust) + self.pictureScroll.frame.height
+        let secScr_w = self.view.frame.size.width
+        let secScr_h = self.view.frame.size.height - self.pageControl.frame.height - self.pictureScroll.frame.height
+        
+        secondaryScroll = UIScrollView(frame: CGRectMake(secScr_x,secScr_y,secScr_w,secScr_h))
+        
+        secondaryScroll.bounds = secondaryScroll.frame
+        
+        secondaryScroll.autoresizingMask = [.None, .FlexibleHeight]
+        
+        secondaryScroll.backgroundColor = UIColor.whiteColor()
+        
+        //====Adds Name Label
+        let nmLab_x = CGFloat(0)
+        let nmLab_y = secScr_y
+        let nmLab_w = secScr_w
+        let nmLab_h = secScr_h * 0.20
+        
+        var nameLabel = UILabel(frame: CGRectMake(nmLab_x, nmLab_y, nmLab_w, nmLab_h))
+        nameLabel.numberOfLines = 1
+        nameLabel.font.fontWithSize(CGFloat(22))
+        nameLabel.adjustsFontSizeToFitWidth = true
+        nameLabel.textAlignment = NSTextAlignment.Center
+        nameLabel.text = "Alison"
+        secondaryScroll.addSubview(nameLabel)
+        
+        view.addSubview(secondaryScroll)
+        secondaryScroll.delegate = self
+        
     }
     
     func initiateImageScroll() {
@@ -124,9 +162,9 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
             self.pageViews.append(nil)
         }
         
-        let pagesScrollViewSize = scrollView.frame.size
+        let pagesScrollViewSize = pictureScroll.frame.size
         
-        scrollView.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: 1)
+        pictureScroll.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: 1)
         
         loadVisiblePages()
     }
@@ -136,14 +174,14 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        print(scrollView.bounds)
-        print(scrollView.frame)
+        print(pictureScroll.bounds)
+        print(pictureScroll.frame)
         
         if let pageView = pageViews[page]{
             
         } else {
             
-            var boundsVar = scrollView.bounds
+            var boundsVar = pictureScroll.bounds
             
             boundsVar.origin.x = boundsVar.size.width * CGFloat(page)
             //boundsVar.origin.y = 64
@@ -152,7 +190,7 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
             let newPageView = UIImageView(image: pageImages[page])
             newPageView.contentMode = .ScaleToFill
             newPageView.frame = boundsVar
-            scrollView.addSubview(newPageView)
+            pictureScroll.addSubview(newPageView)
             
             pageViews[page] = newPageView
             
@@ -173,11 +211,11 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
     
     func loadVisiblePages() {
         
-        let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x*2.0 + pageWidth) / (pageWidth*2.0)))
+        let pageWidth = pictureScroll.frame.size.width
+        let page = Int(floor((pictureScroll.contentOffset.x*2.0 + pageWidth) / (pageWidth*2.0)))
         
         //Lock y-Bounds:
-        scrollView.bounds.origin.y = CGFloat(self.navBar_adjust)
+        pictureScroll.bounds.origin.y = CGFloat(self.navBar_adjust)
         
         pageControl.currentPage = page
         

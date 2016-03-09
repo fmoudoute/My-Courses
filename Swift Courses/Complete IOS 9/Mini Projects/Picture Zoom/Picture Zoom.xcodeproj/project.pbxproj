@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34114D3D1C90193E00B32922 /* tinderGirl.png in Resources */ = {isa = PBXBuildFile; fileRef = 34114D3C1C90193E00B32922 /* tinderGirl.png */; };
 		345289131C8781D000A6F44C /* UploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345289121C8781D000A6F44C /* UploadController.swift */; };
 		349E7CB21C874F1900697D89 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CB11C874F1900697D89 /* AppDelegate.swift */; };
 		349E7CB41C874F1900697D89 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CB31C874F1900697D89 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34114D3C1C90193E00B32922 /* tinderGirl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tinderGirl.png; sourceTree = "<group>"; };
 		345289121C8781D000A6F44C /* UploadController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadController.swift; sourceTree = "<group>"; };
 		349E7CAE1C874F1900697D89 /* Picture Zoom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Picture Zoom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		349E7CB11C874F1900697D89 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -64,13 +66,14 @@
 		349E7CB01C874F1900697D89 /* Picture Zoom */ = {
 			isa = PBXGroup;
 			children = (
+				34114D3C1C90193E00B32922 /* tinderGirl.png */,
+				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
 				349E7CB11C874F1900697D89 /* AppDelegate.swift */,
 				349E7CB31C874F1900697D89 /* ViewController.swift */,
 				349E7CC81C87533A00697D89 /* TableViewController.swift */,
 				345289121C8781D000A6F44C /* UploadController.swift */,
 				34B9C2491C88BCB9008CBCDA /* PanViewController.swift */,
 				349E7CB51C874F1900697D89 /* Main.storyboard */,
-				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
 				349E7CBB1C874F1900697D89 /* Assets.xcassets */,
 				349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */,
 				349E7CC01C874F1900697D89 /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				349E7CBF1C874F1900697D89 /* LaunchScreen.storyboard in Resources */,
+				34114D3D1C90193E00B32922 /* tinderGirl.png in Resources */,
 				349E7CBC1C874F1900697D89 /* Assets.xcassets in Resources */,
 				349E7CC71C8750CE00697D89 /* placeholder-camera-green.png in Resources */,
 				349E7CB71C874F1900697D89 /* Main.storyboard in Resources */,
