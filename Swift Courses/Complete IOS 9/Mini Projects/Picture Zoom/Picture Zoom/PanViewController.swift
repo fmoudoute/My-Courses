@@ -9,8 +9,6 @@
 /*
 To Do:
 
--figure out second scroll view at the bottom of the screen for info
-
 -figure out double tap or pinch to segue to zoom screen
 
 */
@@ -33,6 +31,22 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
     var pageViews: [UIImageView?] = []
     
     var navBar_adjust = Float()
+    
+    func flexibleLabelHeight(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRectMake(0, 0, width, CGFloat.max))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        label.font = font
+        label.text = text
+        
+        label.sizeToFit()
+        return label.frame.height
+    }
+    
+    func buttonAction(sender:UIButton!)
+    {
+        print("Button tapped")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,7 +95,6 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
         
         self.navBar_adjust = Float(self.navigationController!.navigationBar.frame.size.height) + Float(self.navigationController!.navigationBar.frame.size.height)/2.2
         
-        
         //====Set up Picture Scroll View
         
         let picScr_x = CGFloat(0)
@@ -119,34 +132,134 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
         
         view.addSubview(pageControl)
         
+        //====Adds Magnifier Button
+        let magBtn_x = picScr_w - picScr_w * 0.1
+        let magBtn_y = picScr_h + CGFloat(self.navBar_adjust) - (picScr_h + CGFloat(self.navBar_adjust)) * 0.07
+        let magBtn_w = CGFloat(20)
+        let magBtn_h = CGFloat(20)
+        
+        let origImage = UIImage(named: "magnifier30x30.png")
+        let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        let magButton = UIButton(frame: CGRectMake(magBtn_x, magBtn_y, magBtn_w, magBtn_h))
+        magButton.setImage(tintedImage, forState: .Normal)
+        magButton.tintColor = UIColor(red: 0.75, green: 0.75, blue: 0.75, alpha: 1)
+        magButton.addTarget(self, action: "buttonAction:", forControlEvents: .TouchUpInside)
+
+        view.addSubview(magButton)
+        
+        //print(self.pictureScroll.frame.height)
+        //print(CGFloat(self.navBar_adjust) + self.pictureScroll.frame.height)
+
         //====Adds Secondary Scroll view
         let secScr_x = CGFloat(0)
         let secScr_y = CGFloat(self.navBar_adjust) + self.pictureScroll.frame.height
         let secScr_w = self.view.frame.size.width
-        let secScr_h = self.view.frame.size.height - self.pageControl.frame.height - self.pictureScroll.frame.height
+        let secScr_h = self.view.frame.size.height - CGFloat(self.navBar_adjust) - self.pictureScroll.frame.height
         
         secondaryScroll = UIScrollView(frame: CGRectMake(secScr_x,secScr_y,secScr_w,secScr_h))
         
         secondaryScroll.bounds = secondaryScroll.frame
         
-        secondaryScroll.autoresizingMask = [.None, .FlexibleHeight]
+        //secondaryScroll.autoresizingMask = [.None, .FlexibleHeight]
         
         secondaryScroll.backgroundColor = UIColor.whiteColor()
         
-        //====Adds Name Label
-        let nmLab_x = CGFloat(0)
-        let nmLab_y = secScr_y
-        let nmLab_w = secScr_w
-        let nmLab_h = secScr_h * 0.20
+        //secondaryScroll.layer.borderColor = UIColor.redColor().CGColor //for testing
+        //secondaryScroll.layer.borderWidth = 3.0 //for testing
         
-        var nameLabel = UILabel(frame: CGRectMake(nmLab_x, nmLab_y, nmLab_w, nmLab_h))
+        //====Adds Name Label
+        let font_ratio = self.view.frame.size.width / 375.0
+        let col_tungsten = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        let col_steel = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
+        
+        let nmLab_x = CGFloat(0) + self.view.frame.size.width * 0.05
+        let nmLab_y = CGFloat(0)
+        let nmLab_w = self.view.frame.size.width - self.view.frame.size.width * 0.1
+        let nmLab_h = (self.view.frame.size.height - CGFloat(self.navBar_adjust) - self.pictureScroll.frame.height) * 0.25
+        
+        let nameLabel = UILabel(frame: CGRectMake(nmLab_x, nmLab_y, nmLab_w, nmLab_h))
+        //nameLabel.layer.borderColor = UIColor.blackColor().CGColor //for testing
+        //nameLabel.layer.borderWidth = 1.0 //for testing
         nameLabel.numberOfLines = 1
-        nameLabel.font.fontWithSize(CGFloat(22))
+        nameLabel.font = UIFont(name: "HelveticaNeue", size: 27 * font_ratio)
+        nameLabel.textColor = col_tungsten
         nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.textAlignment = NSTextAlignment.Center
         nameLabel.text = "Alison"
         secondaryScroll.addSubview(nameLabel)
         
+        //====Adds Sub-description label
+        let subDesc_x = nmLab_x
+        let subDesc_y = nmLab_y + nmLab_h * 0.75
+        let subDesc_w = nmLab_w
+        let subDesc_h = secScr_h * 0.10
+        
+        let subDescription = UILabel(frame: CGRectMake(subDesc_x, subDesc_y, subDesc_w, subDesc_h))
+        //subDescription.layer.borderColor = UIColor.blackColor().CGColor //for testing
+        //subDescription.layer.borderWidth = 1.0 //for testing
+        subDescription.numberOfLines = 1
+        subDescription.font = UIFont(name: "HelveticaNeue", size: 13 * font_ratio)
+        subDescription.textColor = col_steel
+        subDescription.adjustsFontSizeToFitWidth = true
+        subDescription.textAlignment = NSTextAlignment.Center
+        subDescription.text = "7 miles away, 55 mutual friends"
+        secondaryScroll.addSubview(subDescription)
+
+        //====Adds Hello World label
+        let helwo_x = subDesc_x
+        let helwo_y = subDesc_y + subDesc_h
+        let helwo_w = subDesc_w
+        let helwo_h = secScr_h * 0.22
+        
+        let helwoLabel = UILabel(frame: CGRectMake(helwo_x, helwo_y, helwo_w, helwo_h))
+        //helwoLabel.layer.borderColor = UIColor.blackColor().CGColor //for testing
+        //helwoLabel.layer.borderWidth = 1.0 //for testing
+        helwoLabel.numberOfLines = 1
+        helwoLabel.font = UIFont(name: "HelveticaNeue-Medium", size: 16 * font_ratio)
+        helwoLabel.textColor = col_tungsten
+        helwoLabel.adjustsFontSizeToFitWidth = true
+        helwoLabel.textAlignment = NSTextAlignment.Left
+        helwoLabel.text = "Hello World,"
+        secondaryScroll.addSubview(helwoLabel)
+        
+        //====Adds About Message label
+        let fontInput = UIFont(name: "HelveticaNeue", size: 16 * font_ratio)
+        let textInput = "Our relationship should be like like Nintendo 64--classic, fun to spend hours with, and innocent, non-suggestive, platonic, childhood fun. No blowing or shoving anything."
+        
+        let about_x = helwo_x
+        let about_y = helwo_y + helwo_h * 0.75
+        let about_w = helwo_w
+        let about_h = flexibleLabelHeight(textInput, font: fontInput!, width: about_w)
+        
+        let aboutMess = UILabel(frame: CGRectMake(about_x, about_y, about_w, about_h))
+        //aboutMess.layer.borderColor = UIColor.blackColor().CGColor //for testing
+        //aboutMess.layer.borderWidth = 1.0 //for testing
+        aboutMess.numberOfLines = 0
+        aboutMess.font = fontInput
+        aboutMess.textColor = col_steel
+        
+        aboutMess.lineBreakMode = NSLineBreakMode.ByWordWrapping
+        aboutMess.textAlignment = NSTextAlignment.Left
+        aboutMess.text = textInput
+        aboutMess.sizeToFit()
+        
+        secondaryScroll.addSubview(aboutMess)
+        
+        //====Adds Bottom Padding
+        let botpad_x = about_x
+        let botpad_y = about_y + about_h
+        let botpad_w = about_w
+        let botpad_h = helwo_h * 0.4
+        
+        let bottomPadding = UILabel(frame: CGRectMake(botpad_x, botpad_y, botpad_w, botpad_h))
+        //bottomPadding.layer.borderColor = UIColor.blackColor().CGColor //for testing
+        //bottomPadding.layer.borderWidth = 1.0 //for testing
+        secondaryScroll.addSubview(bottomPadding)
+
+        //print(nmLab_h + subDesc_h + helwo_h + about_h)
+        
+        //Adds secondary scroll content to view
+        secondaryScroll.contentSize = CGSizeMake(0, nmLab_h + subDesc_h + helwo_h + about_h + botpad_h)
         view.addSubview(secondaryScroll)
         secondaryScroll.delegate = self
         
@@ -164,7 +277,7 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
         
         let pagesScrollViewSize = pictureScroll.frame.size
         
-        pictureScroll.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: 1)
+        pictureScroll.contentSize = CGSize(width: pagesScrollViewSize.width * CGFloat(pageImages.count), height: 0)
         
         loadVisiblePages()
     }
@@ -174,8 +287,8 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
             return
         }
         
-        print(pictureScroll.bounds)
-        print(pictureScroll.frame)
+        //print(pictureScroll.bounds)
+        //print(pictureScroll.frame)
         
         if let pageView = pageViews[page]{
             
@@ -190,6 +303,7 @@ class PanViewController: UIViewController, UIScrollViewDelegate {
             let newPageView = UIImageView(image: pageImages[page])
             newPageView.contentMode = .ScaleToFill
             newPageView.frame = boundsVar
+            
             pictureScroll.addSubview(newPageView)
             
             pageViews[page] = newPageView

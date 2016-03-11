@@ -82,7 +82,7 @@ class UploadController: UIViewController,UINavigationControllerDelegate, UIImage
             if self.userProfileImages[currentImage_str] != nil {
                 self.imageView = UIImageView(image: UIImage(data: (self.userProfileImages[currentImage_str] as? NSData)!))
             } else {
-                self.imageView = UIImageView(image: UIImage(named: "placeholder-camera-green"))
+                self.imageView = UIImageView(image: UIImage(named: "placeholder-camera-green.png"))
             }
             
         }

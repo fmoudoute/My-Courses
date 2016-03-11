@@ -17,6 +17,7 @@
 		349E7CBF1C874F1900697D89 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */; };
 		349E7CC71C8750CE00697D89 /* placeholder-camera-green.png in Resources */ = {isa = PBXBuildFile; fileRef = 349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */; };
 		349E7CC91C87533A00697D89 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349E7CC81C87533A00697D89 /* TableViewController.swift */; };
+		34AD590B1C927AE3004F014A /* magnifier30x30.png in Resources */ = {isa = PBXBuildFile; fileRef = 34AD590A1C927AE3004F014A /* magnifier30x30.png */; };
 		34B9C24A1C88BCB9008CBCDA /* PanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B9C2491C88BCB9008CBCDA /* PanViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		349E7CC01C874F1900697D89 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder-camera-green.png"; sourceTree = "<group>"; };
 		349E7CC81C87533A00697D89 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		34AD590A1C927AE3004F014A /* magnifier30x30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = magnifier30x30.png; sourceTree = "<group>"; };
 		34B9C2491C88BCB9008CBCDA /* PanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,16 +70,17 @@
 			children = (
 				34114D3C1C90193E00B32922 /* tinderGirl.png */,
 				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
+				34AD590A1C927AE3004F014A /* magnifier30x30.png */,
 				349E7CB11C874F1900697D89 /* AppDelegate.swift */,
 				349E7CB31C874F1900697D89 /* ViewController.swift */,
 				349E7CC81C87533A00697D89 /* TableViewController.swift */,
 				345289121C8781D000A6F44C /* UploadController.swift */,
 				34B9C2491C88BCB9008CBCDA /* PanViewController.swift */,
+				349E7CB81C874F1900697D89 /* Picture_Zoom.xcdatamodeld */,
 				349E7CB51C874F1900697D89 /* Main.storyboard */,
 				349E7CBB1C874F1900697D89 /* Assets.xcassets */,
 				349E7CBD1C874F1900697D89 /* LaunchScreen.storyboard */,
 				349E7CC01C874F1900697D89 /* Info.plist */,
-				349E7CB81C874F1900697D89 /* Picture_Zoom.xcdatamodeld */,
 			);
 			path = "Picture Zoom";
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 				349E7CBC1C874F1900697D89 /* Assets.xcassets in Resources */,
 				349E7CC71C8750CE00697D89 /* placeholder-camera-green.png in Resources */,
 				349E7CB71C874F1900697D89 /* Main.storyboard in Resources */,
+				34AD590B1C927AE3004F014A /* magnifier30x30.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
