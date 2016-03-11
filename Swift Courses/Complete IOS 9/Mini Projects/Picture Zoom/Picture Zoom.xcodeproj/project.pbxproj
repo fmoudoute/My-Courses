@@ -49,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3431AFF91C9308FF00138CAE /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				34114D3C1C90193E00B32922 /* tinderGirl.png */,
+				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
+				34AD590A1C927AE3004F014A /* magnifier30x30.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		349E7CA51C874F1900697D89 = {
 			isa = PBXGroup;
 			children = (
@@ -68,9 +78,7 @@
 		349E7CB01C874F1900697D89 /* Picture Zoom */ = {
 			isa = PBXGroup;
 			children = (
-				34114D3C1C90193E00B32922 /* tinderGirl.png */,
-				349E7CC61C8750CE00697D89 /* placeholder-camera-green.png */,
-				34AD590A1C927AE3004F014A /* magnifier30x30.png */,
+				3431AFF91C9308FF00138CAE /* Images */,
 				349E7CB11C874F1900697D89 /* AppDelegate.swift */,
 				349E7CB31C874F1900697D89 /* ViewController.swift */,
 				349E7CC81C87533A00697D89 /* TableViewController.swift */,
