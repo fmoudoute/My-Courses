@@ -24,20 +24,20 @@ looking for a regular expression of '[0-9]+' and then converting the extracted s
 and summing up the integers.
 """
 
-import re
-
-#Extracting Digits and Summing them
-hand = open("Week 1 Sample Text.txt")
-numlist = []
-
-for line in hand:
-    line = line.rstrip()
-    extract = re.findall("([0-9]+)", line)
-
-    if len(extract) < 1 : continue
-
-    for i in range(len(extract)):
-        num = float(extract[i])
-        numlist.append(num)
-
-print(sum(numlist))
+handl = open('XXXX.txt', 'r')
+all_num_list = list()
+total_sum = 0
+count = 0
+for line in handl:
+    lines = line.split()     #Spliting the lines using spaces
+    for line in lines:       #Checking line by line for digits - note this can create single items or list
+        x = re.findall("[0-9]+", line)  
+        if len(x) == 0 : continue
+        for y in x:             #Using a loop for the case we find multiple digits in same string such as: http://www.py4e.com/code3/
+            y = float(y)
+            print(y)
+            all_num_list.append(y)
+            count = count + 1
+total_sum = sum(all_num_list)
+print(total_sum)
+print(count)
